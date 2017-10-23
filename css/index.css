@@ -1,0 +1,38 @@
+@charset "utf-8";
+ 
+ /* 首页样式 */
+
+.content-lump{ margin-top: 15px; padding: 15px 0; border-top: solid 3px #f27532;}
+
+.banner-lump{ position: relative; width: 800px; height: 310px;}
+.banner-lump .banner{ position: relative;}
+.banner-lump .banner img{ width: 800px; height: 310px;} 
+.banner-lump .banner li h2{ position: absolute; bottom: 0px; left: 0px; width: 800px; height: 40px; line-height: 40px; text-indent: 20px; color: #fff; font-size: 20px; background: #000; opacity: 0.65; filter: Alpha(opacity=65); font-family: "微软雅黑";}
+.banner-lump .banner li a{ display: block;}
+.banner-lump .banner li{ position: absolute; top: 0; left: 0; z-index: 0; opacity: 0; filter: Alpha(opacity=0);}
+.banner-lump .banner li.cur{ z-index: 9;}
+.banner-lump .banner li:first-child{ opacity: 1; filter: Alpha(opacity=100);}
+
+.banner-lump .slide{ position: absolute; right: 15px; bottom: 15px; z-index: 10;}
+.banner-lump .slide li{ position: relative; float: left; z-index: 10; margin-right: 10px;}
+.banner-lump .slide li a{ display: block; width: 13px; height: 13px; background: url(../images/index/round.png) no-repeat;}
+.banner-lump .slide li.cur a{ background: url(../images/index/active.png) no-repeat;}
+
+.main-news{ padding: 10px 30px; width: 330px; height: 290px; background: #f8f8f8;}
+.main-news h2{ margin-bottom: 10px; color: #0f9e59; font-size: 20px; font-style: italic;}
+.main-news li{ padding: 4px 0; border-top: solid 1px #bfbfbf;}
+.main-news li:first-child{ border-top: 0;}
+.main-news li a{ font-size: 18px; text-indent: 10px; color: #666; font-weight: bold;}
+.main-news li a:hover{ color: red;}
+
+.news-item{ margin: 10px auto;}
+.news-item li{ width: 620px; padding: 15px;}
+.news-item li:hover{ background: #f8f8f8;}
+.news-item li p{ margin:0 8px; font-size: 12px; color: #bbb;}
+.news-item li p.update{ margin-right: 20px;}
+.news-item .txt{ height: 45px; line-height: 45px; color: #404040; font-size: 20px; font-weight: bold;} 
+.news-item .txt:hover{ color: #ff6600;}
+.news-item .img-box{ position: relative; float: left; width: 190px; height: 120px; margin: 0 16px 10px 0; overflow: hidden;} 
+.news-item .img-box img{ position: absolute; width: 190px; height: 120px; -webkit-transition: all .8s; -o-transition: all .8s; transition: all .8s overflow: hidden;}
+.news-item .img-box img:hover{ -webkit-transform: scale(1.2); -ms-transform: scale(1.2); transform: scale(1.2);}
+

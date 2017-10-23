@@ -1,0 +1,111 @@
+@charset "utf-8";
+
+/* 通用样式 */
+.border-lump{ border-bottom: solid 2px #eee;}
+
+.border-lump .top{ padding: 10px 0; font-size: 12px; color: #8e8e8e;}
+.border-lump .top ul{ margin-left: 30px;}
+.border-lump .top li{ float: left; width: 85px; padding-left: 10px; padding-right: 5px; text-align: center;}
+.border-lump .top li:first-child{ width: 150px;}
+.border-lump .top li a:hover{ color: #ff6600;}
+.border-lump .top li .cancel{ cursor: pointer;}
+.border-lump .top li .cancel:hover{ color: #ff6600;}
+.border-lump .top li:first-child{ border-right: solid 1px #dadada;}
+.border-lump .top a{ color: #0766b1;}
+
+.header-lump{ height: 120px; background: url(../images/common/logo.png) no-repeat;}
+
+.footer-lump{ background: url(../images/common/background.jpg) no-repeat;}
+.footer-lump ul{ padding: 60px 0; height: 30px; border-bottom: solid 1px #666;}
+.footer-lump li{ float: left; margin-right: 50px;}
+.footer-lump li a{ display: block; padding-bottom: 10px; color: #FFF; font-family: "微软雅黑"; font-size: 18px;}
+.footer-lump li a:hover{ border-bottom: #00ABC0 solid 3px; color: #00abc0;}
+.footer-lump li.cur a{ border-bottom: #00ABC0 solid 3px; color: #00abc0;}
+
+.footer-lump .txt{ position: relative; margin-top: 30px; padding-bottom: 20px; line-height: 24px;}
+.footer-lump .img-box{ position: absolute; right: 100px; bottom: 50px;}
+.footer-lump .img-box img{ width: 144px; height: 44px;}
+
+
+.side-navigation{ position: fixed; right: 15px; bottom: 80px;}
+.side-navigation li{ margin-bottom: 15px; cursor: pointer; background: #1da1f2; text-align: right;}
+.side-navigation li a{ position: relative; display: block; padding: 5px 10px 5px 48px; color: #fff; font-size: 16px;}
+.side-navigation li:hover{ background: #ff6600; transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -o-transition: all .3s;}
+.side-navigation li i{ position: absolute; left: 10px; top: 10px; width: 30px; height: 30px;}
+.side-navigation li.contact i{ background: url(../images/index/talk.png) no-repeat;}
+.side-navigation li.money i{ background: url(../images/index/money.png) no-repeat;}
+.side-navigation li.top i{ background: url(../images/index/go-top.png) no-repeat;}
+
+.side-navigation li img{ position: absolute; left: -180px; top: -50px; opacity: 0; filter: Alpha(opacity=0); width: 160px; height: 160px;}
+.side-navigation li:hover img{ opacity: 1; filter: Alpha(opacity=100); -webkit-transition: all .8s; -o-transition: all .8s; transition: all .8s;}
+
+.register-form{ position: absolute; z-index: 25; width: 486px; height: 438px; background: -webkit-linear-gradient(330deg, #a6c0fe 0%, #f68084 100%);background: -o-linear-gradient(330deg, #a6c0fe 0%, #f68084 100%); background: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%); background: #a6c0fe\9; border-radius: 5px;}
+.register-form.clarity{ background: 0; opacity: .9; filter: Alpha(opacity=90);}
+.register-form.h-350{ height: 350px;}
+.register-form .tt{ padding: 45px 0 20px 0; text-align: center; color: #FFF; font-size: 16px; font-family: "微软雅黑"; border-radius: 5px 5px 0 0;}
+.register-form.clarity .tt{ color: #fff; font-size: 30px;}
+.register-form .tt i{ display: block; position: absolute; top: 5px; right: 5px; background: url(../images/index/img.png) no-repeat; width: 9px; height: 9px; background-position:0 0; cursor: pointer;}
+.register-form .user{ padding: 30px 0 15px 100px;}
+
+.register-form .user .item{ position: relative; width: 292px;}
+.register-form .user .ipt.cur{ -moz-box-shadow:0px 0px 20px #409FDE; -webkit-box-shadow:0px 0px 20px #409FDE; box-shadow:0px 0px 20px #409FDE;}
+.register-form .user .item span{ position: absolute; top: 15px; right: -70px; color: red;}
+.register-form .user .btn-change{ position: absolute; right: 5px; top: 10px; height: 27px; background-color: #14b9ed; color: #fff; font-family: "微软雅黑"; border-radius:0  15px 15px 0; cursor: pointer;}
+.register-form .user .btn{ position: absolute; right: 5px; top: 10px; height: 27px; background-color: #14b9ed; color: #fff; font-family: "微软雅黑"; border-radius:0  15px 15px 0; cursor: pointer;}
+.register-form .user .ipt{ width: 210px; height: 20px; padding: 12px 40px; margin-bottom: 10px; font-size: 14px; border: solid 2px #eee; border-radius: 15px;}
+.register-form .user .ipt.success{ border: solid 2px green;}
+.register-form .user .ipt.fail{ border: solid 2px red;}
+.register-form .user .img-box{ position: absolute; right: 45px; top: 10px; border-radius: 15px;}
+.register-form .user img{ width: 72px; height: 27px;}
+.register-form .user i{ position: absolute; left: 7.5px; top: 10px; display: block; width: 25px; height: 25px; background: url(../images/index/img.png) no-repeat;}
+.register-form .user i.mobile{ background-position:-36px 0;}
+.register-form .user i.message{ background-position:-10px 0;}
+.register-form .user i.password{ background-position:-62px 0;}
+
+.register-form .submit{ padding: 0 100px;}
+.register-form .submit .btn{ width: 292px; height: 40px; margin-bottom: 9px; background: url(../images/common/bg.jpg) repeat-x; color: #FFF; border-radius: 15px; cursor: pointer;}
+.register-form .submit p{ font-size: 12px; text-align: center; color: #000;}
+.register-form .submit span{ font-size: 12px; color: #fee140; cursor: pointer;}
+.register-form.clarity .submit p{ font-size: 15px; text-align: center; color: #fff;}
+.register-form.clarity .submit span{ font-size: 15px; color: #ff6600; cursor: pointer;}
+
+.register-form .tt span{ display: block; float: left; width: 160px; height: 30px; color: #299bda; font-size: 16px; font-family: "微软雅黑"; text-align: center; cursor: pointer;}
+.register-form .tt span.cur{ color: #FFF;}
+.register-form .tt span:first-child{ padding-left: 75px; border-right: solid 1px #1777c3;}
+
+
+
+.chat-lump{ position: fixed; top: 80px; left: 0; bottom: 80px; width: 130px;}
+.chat-lump .friend{ position: absolute; top: 60px; left: 17px; z-index: 10; color: #000;}
+.chat-lump .addfriend{ position: absolute; bottom: 5px; left: 0px; width: 130px;}
+.chat-lump .addfriend button{ width: 100px; height: 30px; margin-left: 15px; background: #1e6db0; border-radius: 15px; border: 0; color: #FFF; cursor: pointer;}
+.chat-lump .addfriend button:hover{ background: #C0FF3E; color: #8E388E; transition: all .6s; -moz-transition: all .6s; -webkit-transition: all .6s; -o-transition: all .6s;}
+
+.chat-list{ position: fixed; top: 80px; left: 0; bottom: 80px; padding: 5px 0 40px 0; background: #1da1f2; overflow: auto;}
+.chat-list li{ position: relative; padding: 5px; width: 120px; cursor: pointer;}
+.chat-list li:first-child{ margin-bottom: 30px; cursor: default;}
+.chat-list li:hover{ background: #8dd2eb; transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -o-transition: all .3s;}
+.chat-list li:first-child:hover{ background: #1da1f2; cursor: pointer;}
+.chat-list li .btn{ position: relative; }
+.chat-list li p{ margin-top: 10px; width: 60px; color: #000; font-family: "微软雅黑"; white-space: nowrap; text-overflow:ellipsis; overflow: hidden;}
+.chat-list li.cur{ background: #8dd2eb;}
+.chat-list li img{ margin-right: 10px; width: 40px; height: 40px; border-radius: 50%;}
+.chat-list li i{ position: absolute; display: block; background: #f00; border-radius: 50%; width: 10px; height: 10px; top: -2px; left: 40px;}
+
+.item img{ width: 40px; height: 40px;}
+
+.chat-box{ position: absolute; top: 0; left: 130px; bottom: 0; z-index: 15; width: 486px; background: #FFF; border: solid 1px #eee; background: #f5f5f5;}
+.chat-box .operate span{ display: block; width: 22px; font-size: 17px; cursor: pointer; text-align: center;}
+.chat-box .operate span:hover{ background: #ff3b30; color: #FFF;}
+
+.chat-box .chater-name{ padding-left: 30px; text-align: left; border-bottom: solid 1px #eee;line-height: 30px;}
+.chat-box .chater-content{ position: absolute; top: 55px; bottom: 100px; width: 438px; padding: 0px 25px 20px 25px; margin-bottom: 10px; overflow: auto;}
+.chat-box .chater-content .item{ margin-bottom: 15px;}
+.chat-box .chater-content .txt{ width: 300px;}
+.chat-box .chater-content .item p{ margin: 0 15px; padding: 10px; border: solid 1px #ededed; background: #FFF; color: #000; font-family: "微软雅黑"; border-radius: 10px;}
+
+.chat-box .chat{ position: absolute; bottom: 0px; padding: 5px 0; height: 100px; width: 485px; background: #FFF; border: solid 1px #eee; text-indent: 10px;}
+.chat-box .chat textarea{ padding-top: 5px; width: 465px; height: 60px; border: 0; resize: none; font-family: "微软雅黑";}
+.chat-box .chat .btn{ margin-right: 15px; width: 80px; text-align: center; color: #606060; border: solid 1px #e5e5e5; cursor: pointer; border-radius: 10px; font-size: 15px; font-family: "微软雅黑";}
+.chat-box .chat .btn:hover{ background: #9eea6a};
+ 

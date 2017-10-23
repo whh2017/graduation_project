@@ -1,0 +1,51 @@
+@charset "utf-8";
+
+/*reset*/
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td { margin: 0; padding: 0;}
+table { border-collapse: collapse; border-spacing: 0;}
+fieldset, img { border: 0;}
+em, strong,i{ font-style: normal;}
+ol, ul, li { list-style: none;}
+caption, th { text-align: left;}
+input, button, textarea, select, optgroup, option { font-family: arial; font-size: inherit; font-style: inherit; font-weight: inherit; border:0;}
+select, input, label, button, button img, img {vertical-align: middle;}
+input, button, textarea, img { line-height: normal;}
+/*主体*/
+body{ font: 14px/1.5 arial; color: #7e7e7e; min-width: 1190px; font-family: "微软雅黑"; background: #f4f4f4;}
+a{ color: #7e7e7e;text-decoration: none;}
+a:hover{ text-decoration: none;}
+:focus{ outline: 0;}
+.clearfix{ clear: left; zoom: 1;}
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden;}
+.hide{ display: none;}
+.tc{ text-align: center;}
+.tr{ text-align: right;}
+.fl{ float: left;}
+.fr{ float: right;}
+.fs12{ font-size: 12px;}
+.fs14{ font-size: 14px;}
+.fs16{ font-size: 16px;}
+.mt-10{ margin-top: 10px;}
+.mr-10{ margin-right: 10px;}
+.mb-10{ margin-bottom: 10px;}
+.pr-18{ padding-right: 18px;}
+.ml-30{ margin-left: 30px;}
+.mt-20{ margin-top: 20px;}
+.ml-200{ margin-left: 200px;}
+.ml-100{ margin-left: 100px;}
+.ml-10{ margin-left: 10px;}
+.ml-5{ margin-left: 5px;}
+.h-340{ height: 340px;}
+.br-15{ border-radius: 15px; border: solid 1px #eee;}
+.pb-40{ padding-bottom: 40px;}
+.pt-40{ padding-top: 40px; padding-right: 25px;}
+.br-1{ border-right: solid 1px #eee;}
+.w-490{ width: 490px;}
+.bg-color{ background: #eee;}
+.layout{ width: 1190px; margin-left: auto; margin-right: auto;}
+.layout1000{ width: 1000px; margin-left: auto; margin-right: auto;}
+
+
+
+
+
