@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-.header-box{ position: fixed; top: 0; left: 0; width: 100%; height: 45px; line-height: 45px; background: #fff;-moz-box-shadow:0px 2px 1px #8c8c8c; -webkit-box-shadow:0px 2px 1px #8c8c8c; box-shadow:0px 2px 1px #8c8c8c;}
+.header-box{ position: fixed; top: 0; left: 0; z-index: 15; width: 100%; height: 45px; line-height: 45px; background: #fff;-moz-box-shadow:0px 2px 1px #8c8c8c; -webkit-box-shadow:0px 2px 1px #8c8c8c; box-shadow:0px 2px 1px #8c8c8c;}
 .header-box li{ float: left;}
 .header-box .nav  a{ display: block; width: 80px; color: #CC49AA; font-weight: bold; text-align: center;}
 .header-box .nav  a:hover{ background: #f5f5f5;}
@@ -16,8 +16,9 @@
 .sort-lump:hover{ background: #c2e9fb; -webkit-transition: all .5s; -o-transition: all .5s; transition: all .5s;}
 .sort-lump i.sort{ position: absolute; right: 15px; top: 11px; width: 8px; height: 14px; background: url(../images/bbs/sort.png) no-repeat;}
 .sort-item{ position: absolute; left: 0; top: 36px; width: 105px; height: 72px; background: #fff;}
-.sort-item p{ border-top: solid 1px #dfdfdf; text-align: left;}
-.sort-item p:hover{ background: #e7edf3;}
+.sort-item a{ display: block; border: solid 1px #dfdfdf; text-align: left; background: #fff;}
+.sort-item a:first-child{ border-bottom: 0;}
+.sort-item a:hover{ background: #e7edf3;}
 
 .left-content .edit{ position: relative; width: 120px; height: 38px; line-height: 38px; background: #e7edf3; text-indent: 35px; color: #667d99; font-size: 13px; cursor: pointer; border-radius: 5px;}
 .left-content .edit:hover{ background: #c2e9fb; -webkit-transition: all .5s; -o-transition: all .5s; transition: all .5s;}
@@ -41,3 +42,84 @@
 
 .left-content .more a{ display: block; width: 100px; height: 30px; line-height: 30px; margin: 0 auto; background: #2ea7e0; color: #fff; border-radius: 10px;}
 .left-content .more a:hover{ background: #30cfd0; -webkit-transition: all .3s; -o-transition: all .3s; transition: all .3s;}
+
+.right-content{ width: 300px; margin: 10px 0 0 10px;}
+
+.progress-lump{ background: #fff; padding-bottom: 1px;}
+.progress-lump h2{ padding: 10px 0; color: #333; font-size: 14px; text-align: center; border-bottom: solid 1px #dfdfdf;}
+.progress-lump .progress{ position: relative; margin: 10px; background: #f5f5f5; border-radius: 10px;}
+.progress-lump .progress .now{ background: #5cb85c; width: 10%; height: 21px; border-radius: 10px 0 0 10px;}
+.progress-lump .progress p{ position: absolute; left: 125px; top: 0px;}
+
+.light{ background-image: -webkit-linear-gradient(left, #147B96, #E6D205 25%, #147B96 50%, #E6D205 75%, #147B96); -webkit-text-fill-color: transparent; -webkit-background-clip: text; -webkit-background-size: 200% 100%; -webkit-animation: masked-animation 4s infinite linear;}
+
+@-webkit-keyframes masked-animation{
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+@keyframes masked-animation{
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+.subarea-lump{ background: #fff; margin-top: 20px; border: 1px solid #e6e6e6;}
+.subarea-lump h2{ padding: 10px 0; text-indent: 10px; font-size: 14px; color: #333; border-bottom: solid 1px #dfdfdf;}
+.subarea-lump li{ position: relative; float: left; width: 50%; height: 110px; background: #fff; font-size: 12px;}
+.subarea-lump li a{ display: block; height: 110px;}
+.subarea-lump li p{ position: absolute; left: 50px; bottom: 10px;}
+.subarea-lump li:hover{ background :#f0f0f0; box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.08) inset; cursor: pointer; text-decoration: none;}
+
+.subarea-lump li i{ position: absolute; left: 50px; bottom: 35px; width: 50px; height: 50px; background: url(../images/bbs/img.png) no-repeat;}
+.subarea-lump li i.all{ background-position: -150px 0;}
+.subarea-lump li i.talk{ background-position:-50px 0;}
+.subarea-lump li i.act{ background-position:-100px 0;}
+.subarea-lump li i.bug{ background-position:0 0;}
+
+.advertment-lump{ position: relative; width: 300px; height: 186px; margin-top: 20px;}
+.advertment-lump .banner{ position: relative;}
+.advertment-lump .banner img{ width: 300px; height: 186px;} 
+.advertment-lump .banner a{ display: block; position: relative; width: 300px; height: 186px; overflow: hidden;}
+.advertment-lump .banner li{ position: absolute; top: 0; left: 0; z-index: 0; opacity: 0; filter: Alpha(opacity=0);}
+.advertment-lump .banner li.cur{ z-index: 9;}
+.advertment-lump .banner li:first-child{ opacity: 1; filter: Alpha(opacity=100);}
+
+.advertment-lump .slide{ position: absolute; left: 120px; bottom: 7px; z-index: 10;}
+.advertment-lump .slide li{ position: relative; float: left; z-index: 10; margin-right: 10px;}
+.advertment-lump .slide li a{ display: block; width: 10px; height: 10px; background: #fff; border-radius: 50%;}
+.advertment-lump .slide li.cur a{ background: #09c;}
+
+.advertment-lump .txt{ position: absolute; top: -2px; left: 0; width: 100%; height: 55px;}
+.advertment-lump .txt p{ font-size: 20px; color: #fff; margin-top: 3px; text-align: center; background: #333; opacity: .8; filter: Alpha(opacity=80);}
+.advertment-lump .txt em{ height: 20px; font-size: 14px; color: #e9e9e9;}
+
+.txt-mask{ position: absolute; left: 0; bottom: 0px; width: 100%; height: 0%; background: #000; opacity: .85; filter: Alpha(opacity=85);}
+.txt-mask p{ padding: 10px 0; margin: 50px 30px; font-size: 24px; color: #fff; text-align: center; border-top: solid 1px #fff; border-bottom: solid 1px #fff; font-weight: bold;}
+.txt-mask span{ font-size: 12px; color: #e9e9e9;}
+
+.data-count{ margin-top: 20px; background: #fff; border: 1px solid #e6e6e6;}
+.data-count h2{ padding: 10px 0; color: #333; font-size: 14px; text-align: left; border-bottom: solid 1px #dfdfdf; text-indent: 10px;}
+.data-count ul{ padding: 10px;}
+.data-count ul li{ margin-bottom: 5px;}
+.data-count ul p{ font-size: 14px; color: #000;}
+
+.editor-lump{ position: absolute; width: 500px; padding: 20px 10px; border: solid 1px #dfdfdf; background: #fff; z-index: 22;}
+.editor-lump i{ position: absolute; right: -10px; top: -100px; width: 27px; font-size: 18px; text-align: center; cursor: pointer;}
+.editor-lump i:hover{ background: red; color: #fff;}
+.editor-lump p{ margin-bottom: 5px; font-weight: 700px; color: #000;}
+.editor-lump select{ display: block; width: 133px; height: 33px; background: #fff; border: solid 1px #c4c4c4; border-radius: 5px; cursor: pointer;}
+.editor-lump .ipt{ display: block; width: 330px; height: 31px; background: #fff; border: solid 1px #c4c4c4; border-radius: 5px; text-indent: 10px;}
+
+.edit-content{ position: relative; margin-top: 20px;}
+.edit-content textarea{ resize: none; width: 480px; height: 200px; padding: 10px; border: solid 1px #dfdfdf; border-radius: 5px;}
+.edit-content span{ margin-left: 5px; color: #fa709a;}
+.edit-content a{ display: block; width: 100px; height: 30px; line-height: 30px; margin: 15px auto 0; text-align: center; background: #fff; border: solid 2px #3583fb; color: #3583fb; border-radius: 40px; font-size: 16px;}
+.edit-content a:hover{ background: #3583fb; color: #fff; -webkit-transition: all .3s; -o-transition: all .3s; transition: all .3s;}

@@ -1,5 +1,7 @@
 
 $(document).ready(function(){
+
+	/* 判定浏览器有否有缓存数据，没有则进入登录注册界面，没有请求后台ajax局部刷新界面 */
 	var storage = window.localStorage;
 	var read_data = storage.getItem("data");
 	var data_obj = JSON.parse(read_data);
@@ -166,7 +168,7 @@ $(document).ready(function(){
 
 // });
 
-/* 更改用户密码 */
+/* 更改用户密码 后台校验密码是否为当前用户密码 */
 $('.edit-content .origin').blur(function(){
 	var origin_pw = $(this).val();
 	var origin_spw = JSON.stringify(origin_pw);
