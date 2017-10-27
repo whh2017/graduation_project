@@ -5,6 +5,9 @@
 .header-box .nav  a{ display: block; width: 80px; color: #CC49AA; font-weight: bold; text-align: center;}
 .header-box .nav  a:hover{ background: #f5f5f5;}
 .header-box .nav li.cur a{ background: #f5f5f5;}
+.header-box .head p{ color: #666;}
+.header-box .head p.blue{ color: #2ea7e0;}
+.header-box .head p a{ color: #2ea7e0; }
 .header-box .head img{ margin-top: 3px; margin-right: 15px; width: 40px; height: 40px; border-radius: 50%;}
 .header-box .head a:hover{ color: #ff6600;}
 
@@ -48,7 +51,7 @@
 .progress-lump{ background: #fff; padding-bottom: 1px;}
 .progress-lump h2{ padding: 10px 0; color: #333; font-size: 14px; text-align: center; border-bottom: solid 1px #dfdfdf;}
 .progress-lump .progress{ position: relative; margin: 10px; background: #f5f5f5; border-radius: 10px;}
-.progress-lump .progress .now{ background: #5cb85c; width: 10%; height: 21px; border-radius: 10px 0 0 10px;}
+.progress-lump .progress .now{ background: #5cb85c; width: 0%; height: 21px; border-radius: 10px 0 0 10px;}
 .progress-lump .progress p{ position: absolute; left: 125px; top: 0px;}
 
 .light{ background-image: -webkit-linear-gradient(left, #147B96, #E6D205 25%, #147B96 50%, #E6D205 75%, #147B96); -webkit-text-fill-color: transparent; -webkit-background-clip: text; -webkit-background-size: 200% 100%; -webkit-animation: masked-animation 4s infinite linear;}
@@ -112,14 +115,30 @@
 .data-count ul p{ font-size: 14px; color: #000;}
 
 .editor-lump{ position: absolute; width: 500px; padding: 20px 10px; border: solid 1px #dfdfdf; background: #fff; z-index: 22;}
-.editor-lump i{ position: absolute; right: -10px; top: -100px; width: 27px; font-size: 18px; text-align: center; cursor: pointer;}
+.editor-lump i{ position: absolute; right: -11px; top: -100px; width: 27px; font-size: 18px; text-align: center; cursor: pointer;}
 .editor-lump i:hover{ background: red; color: #fff;}
 .editor-lump p{ margin-bottom: 5px; font-weight: 700px; color: #000;}
 .editor-lump select{ display: block; width: 133px; height: 33px; background: #fff; border: solid 1px #c4c4c4; border-radius: 5px; cursor: pointer;}
 .editor-lump .ipt{ display: block; width: 330px; height: 31px; background: #fff; border: solid 1px #c4c4c4; border-radius: 5px; text-indent: 10px;}
 
 .edit-content{ position: relative; margin-top: 20px;}
-.edit-content textarea{ resize: none; width: 480px; height: 200px; padding: 10px; border: solid 1px #dfdfdf; border-radius: 5px;}
+.edit-content textarea{ resize: none; width: 480px; height: 150px; padding: 10px; border: solid 1px #dfdfdf; border-radius: 5px;}
 .edit-content span{ margin-left: 5px; color: #fa709a;}
 .edit-content a{ display: block; width: 100px; height: 30px; line-height: 30px; margin: 15px auto 0; text-align: center; background: #fff; border: solid 2px #3583fb; color: #3583fb; border-radius: 40px; font-size: 16px;}
 .edit-content a:hover{ background: #3583fb; color: #fff; -webkit-transition: all .3s; -o-transition: all .3s; transition: all .3s;}
+.edit-content .upload{ width: 80px; height: 25px; margin-top: 10px; color: #fff; line-height: 25px; background: #a6c1ee; text-align: center; font-size: 14px; cursor: pointer; border-radius: 10px;}
+.edit-content .upload:hover{ background: #fbc2eb; -webkit-transition: all .3s; -o-transition: all .3s; transition: all .3s;}
+.edit-content .img-preview{ margin: 10px 15px; margin-left: 5px;}
+.edit-content .img-preview img{ float: left; width: 100px; height: 100px; margin-right: 20px;}
+.edit-content .img-preview img.success{ -moz-box-shadow:0px 0px 10px #14FF1C; -webkit-box-shadow:0px 0px 10px #14FF1C; box-shadow:0px 0px 10px #14FF1C;}
+
+/* 帖子详情页 样式 */
+.left-content .bread{ height: 47px; line-height: 47px; padding-left: 15px; margin-bottom: 20px; background: #fff; border: solid 1px #dfdfdf; border-radius: 5px;}
+.left-content .bread a{ margin: 0 2px; color: #09c; font-size: 12px;}
+
+.left-content .article{ padding: 10px; background: #fff; border: solid 1px #dfdfdf;}
+.left-content .article .top{ padding-bottom: 10px; border-bottom: solid 1px #dfdfdf;}
+.left-content .article .top h1{ margin-bottom: 3px; font-size: 26px; font-weight: normal; color: #000;}
+.left-content .article .top span{ margin-right: 10px; color: #09c; font-size: 12px;}
+
+.article_txt{ padding: 15px; line-height: 2;}

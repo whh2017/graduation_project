@@ -165,9 +165,7 @@ $(document).ready(function() {
 		width: 400
 	});
 
-	/* 注册登录逻辑 */
-
-	/* 注册 */
+	/* 判断是否有缓存数据 */
 	var storage = window.localStorage;
 	var read_data = storage.getItem("data");
 	var data_obj = JSON.parse(read_data);
@@ -193,6 +191,10 @@ $(document).ready(function() {
 	}else{   		
 		console.log("不存在的....");
 	}
+
+	/* 注册登录逻辑 */
+
+	/* 注册 */
 	$('#register-form .btn').click(function(){
 		if($('#register-form').hasClass("wobble")){
 			$('#register-form').removeClass("wobble");
@@ -234,6 +236,7 @@ $(document).ready(function() {
 	        	alert("信息不全，请填写完整。");
 	        }
 	    });
+	
 	/* 登录 */
 	$('#login-form').on('click','.btn',function(){
 		var user_logindata = {

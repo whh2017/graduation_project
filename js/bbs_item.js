@@ -9,7 +9,7 @@ $(document).ready(function(){
 		$.ajax({  
 			type: "get",  
 			// 老麦提供接口
-			url: "data/bbs_test.json",  
+			url: "../../data/bbs_test.json",  
 			dataType: "json",
 			data: JSON.stringify(data_obj.phone),  
 			success: function (res) {  
@@ -17,7 +17,7 @@ $(document).ready(function(){
 	                //layer.close(ii); 
 	                if(res.flag){
 	                	console.log("该用户手机号码存在....");
-	                	$('.head').find("img").attr("src",res.user_id.head_src);
+	                	$('.head').find("img").attr("src",res.user_id.item_head_src);
 	                	if(res.user_id.name==""){
 	                		console.log("该用户昵称未填写....");
 	                		$('.head').find("p").empty().html("用户&nbsp;"+ res.user_id.phone +"&nbsp;").addClass("blue");
@@ -43,32 +43,6 @@ $(document).ready(function(){
 	}
 
 	/* 动态刷新主题列表 */
-	$.ajax({  
-		type: "get",  
-			// 老麦提供接口
-			url: "data/bbs_li.json",  
-			dataType: "json",
-			success: function (res) {  
-				
-				var len = res.item.length;
-				var i = 0;
-				for( i = 0; i < len; i++){
-					$('.left-content .content ul').append('<li class="clearfix"><div class="icon fl"><a href="#"><img src='+res.item[i].img+'></a></div><div class="fl"><div class="clearfix tt"><span class="nor fl">'+res.item[i].topic+'</span><a class="title fl" href="#">'+res.item[i].tt+'</a></div><div class="txt"><p><span class="w">'+res.item[i].user_name+'</span>&nbsp;发表于：<span class="time">'+res.item[i].start_time+'</span>&nbsp;最新回复：<span class="new">'+res.item[i].lastest_time+'</span></p></div></div><div class="fr mt-10 mr-10"><span class="comment">'+res.item[i].comment+'</span></div><div style="display: none;" class="tooltip"><div id='+"tooltip"+i+'><div class="clearfix"><div class="img-box fl"><img src='+res.item[i].img+'><div class="talk clearfix"><a href="#" class="fl">+私聊</a></div></div><div class="h-102 fl"><p class="name">'+res.item[i].user_mes.name+'</p><p class="school">'+res.item[i].user_mes.school+'</p><span class="sex">'+res.item[i].user_mes.sex+'</span><span class="year ml-5">'+res.item[i].user_mes.year+'<span><p>上次登陆时间：<span class="time">2017-10-17</span></p></div></div></div></div></li>');
-					if(res.item[i].top){
-						$('.left-content li span.nor').removeClass("nor").addClass("kind");
-						$('.left-content li a.title').addClass("light");
-					}
-				}
-				console.log("动态列表加载完毕....");
-				$('.left-content .content').on('mouseover','img',function(){
-					var now_index = $(this).parents("li").index();
-					tooltip.pop(this, '#tooltip'+now_index, {position:1, offsetX:-20, effect:'slide'})
-				});          
-			},
-			error: function(res){
-				console.log("ajax请求失败....");
-			}
-		});
 
 
 	//$('.progress-lump .progress span').html(i);

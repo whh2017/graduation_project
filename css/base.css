@@ -35,6 +35,7 @@ a:hover{ text-decoration: none;}
 .mt-100{ margin-top: 100px;}
 .ml-100{ margin-left: 100px;}
 .ml-10{ margin-left: 10px;}
+.h-102{ height: 102px;}
 .ml-5{ margin-left: 5px;}
 .h-340{ height: 340px;}
 .br-15{ border-radius: 15px; border: solid 1px #eee;}
@@ -45,6 +46,7 @@ a:hover{ text-decoration: none;}
 .bg-color{ background: #eee;}
 .layout{ width: 1190px; margin-left: auto; margin-right: auto;}
 .layout1000{ width: 1000px; margin-left: auto; margin-right: auto;}
+.nolook{ visibility: hidden;}
 
 
 
