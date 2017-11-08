@@ -142,3 +142,20 @@
 .left-content .article .top span{ margin-right: 10px; color: #09c; font-size: 12px;}
 
 .article_txt{ padding: 15px; line-height: 2;}
+
+.comment-lump{ padding: 10px; background: #fff; border: solid 1px #dfdfdf;}
+.comment-lump li{ padding: 14px 0; border-top: solid 1px #dfdfdf; border-top: solid 1px #dfdfdf;}
+.comment-lump li:first-child{ border-top: 0;}
+.comment-lump p.tt{ padding-bottom: 6px; color: #000; font-weight: bold; border-bottom: solid 1px #dfdfdf;}
+.comment-lump span{ margin-left: 5px; color: #888; font-size: 12px; font-weight: normal;}
+.comment-lump img{ width: 48px; height: 48px; border-radius: 50%;}
+.comment-lump span.comment-name{ margin-left: 10px; color: #09c; font-size: 13px;}
+.comment-lump span.comment-time{ margin-left: 15px;}
+
+.comment-lump .txt p.comment-txt{ margin-left: 10px; margin-top: 5px; color: #333;}
+
+.report-comment{ margin-top: 20px; padding: 10px; background: #fff; border: solid 1px #dfdfdf;}
+.report-comment p{ margin-bottom: 10px; color: #333; font-weight: bold; padding: 2px 7px; border-left: solid 4px #ff6600; font-size: 18px;}
+.report-comment textarea{ resize: none; width: 600px; height: 150px; padding: 15px; border: solid 1px #c9d8db;}
+.report-comment button{ color: #fff; background: #09c; width: 80px; height: 30px; line-height: 30px; margin-top: 10px; font-size: 16px; font-family: "微软雅黑"; cursor: pointer;}
+.report-comment button:hover{ opacity: .7; filter: Alpha(opacity=70); -webkit-transition: all .3s; -o-transition: all .3s; transition: all .3s;}

@@ -1,4 +1,4 @@
-{
+{	
 	"item":[
 		{
 		"img":"images/local/maiheliang.jpg",
@@ -9,6 +9,7 @@
 		"lastest_time":"2017-10-24",
 		"comment":"982",
 		"top":true,
+		"a_href": "bbs_page/2017_10/bbs_item.html",
 		"user_mes":{
 			"name":"卢本伟NO.1",
 			"sex":"男",
@@ -25,51 +26,109 @@
 		"lastest_time":"2017-10-18",
 		"comment":"234",
 		"top":false,
+		"a_href": "bbs_page/2017_10/bbs_item.html",
 		"user_mes":{
 			"name":"卢本伟NO.2",
 			"sex":"女",
 			"year":"22岁",
 			"school":"广州商学院"
 			}
-		},{
+		},
+		{
 		"img":"images/local/maiheliang.jpg",
-		"topic":"谈天说地3",
+		"topic":"谈天说地2",
 		"tt":"恭喜RNG WE晋级决赛会师鸟巢！",
 		"user_name":"德云色",
 		"start_time":"2017-10-10",
 		"lastest_time":"2017-10-18",
 		"comment":"234",
 		"top":false,
+		"a_href": "bbs_page/2017_10/bbs_item.html",
 		"user_mes":{
 			"name":"卢本伟NO.2",
 			"sex":"女",
 			"year":"22岁",
 			"school":"广州商学院"
 			}
-		},{
+		},
+		{
 		"img":"images/local/maiheliang.jpg",
-		"topic":"谈天说地4",
+		"topic":"谈天说地2",
 		"tt":"恭喜RNG WE晋级决赛会师鸟巢！",
 		"user_name":"德云色",
 		"start_time":"2017-10-10",
 		"lastest_time":"2017-10-18",
 		"comment":"234",
 		"top":false,
+		"a_href": "bbs_page/2017_10/bbs_item.html",
 		"user_mes":{
 			"name":"卢本伟NO.2",
 			"sex":"女",
 			"year":"22岁",
 			"school":"广州商学院"
 			}
-		},{
+		},
+		{
 		"img":"images/local/maiheliang.jpg",
-		"topic":"谈天说地5",
+		"topic":"谈天说地2",
 		"tt":"恭喜RNG WE晋级决赛会师鸟巢！",
 		"user_name":"德云色",
 		"start_time":"2017-10-10",
 		"lastest_time":"2017-10-18",
 		"comment":"234",
 		"top":false,
+		"a_href": "bbs_page/2017_10/bbs_item.html",
+		"user_mes":{
+			"name":"卢本伟NO.2",
+			"sex":"女",
+			"year":"22岁",
+			"school":"广州商学院"
+			}
+		},
+		{
+		"img":"images/local/maiheliang.jpg",
+		"topic":"谈天说地2",
+		"tt":"恭喜RNG WE晋级决赛会师鸟巢！",
+		"user_name":"德云色",
+		"start_time":"2017-10-10",
+		"lastest_time":"2017-10-18",
+		"comment":"234",
+		"top":false,
+		"a_href": "bbs_page/2017_10/bbs_item.html",
+		"user_mes":{
+			"name":"卢本伟NO.2",
+			"sex":"女",
+			"year":"22岁",
+			"school":"广州商学院"
+			}
+		},
+		{
+		"img":"images/local/maiheliang.jpg",
+		"topic":"谈天说地2",
+		"tt":"恭喜RNG WE晋级决赛会师鸟巢！",
+		"user_name":"德云色",
+		"start_time":"2017-10-10",
+		"lastest_time":"2017-10-18",
+		"comment":"234",
+		"top":false,
+		"a_href": "bbs_page/2017_10/bbs_item.html",
+		"user_mes":{
+			"name":"卢本伟NO.2",
+			"sex":"女",
+			"year":"22岁",
+			"school":"广州商学院"
+			}
+		},
+		{
+		"img":"images/local/maiheliang.jpg",
+		"topic":"谈天说地2",
+		"tt":"恭喜RNG WE晋级决赛会师鸟巢！",
+		"user_name":"德云色",
+		"start_time":"2017-10-10",
+		"lastest_time":"2017-10-18",
+		"comment":"234",
+		"top":false,
+		"a_href": "bbs_page/2017_10/bbs_item.html",
 		"user_mes":{
 			"name":"卢本伟NO.2",
 			"sex":"女",
