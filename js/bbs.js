@@ -4,6 +4,7 @@ $(document).ready(function(){
 	var read_data = storage.getItem("data");
 	var data_obj = JSON.parse(read_data);
 	var fllag = false; // 是否有缓存标志位。
+	var all_page;
 	if(read_data){
 		console.log("本地有缓存数据，正在进行ajax请求校验....");
 		$.ajax({  
@@ -44,19 +45,16 @@ $(document).ready(function(){
 		console.log("本地无缓存数据....");
 		fllag = false;
 	}
-	console.log(fllag);
 	/* 动态刷新主题列表 
 	   初始化只加载8条
 	   默认按照最新时间排序刷新，另外弄条按照评论数据的多少来刷新列表（两条列表对应不同url）。
-	*/
-
-	var update_count = 1;
+	   */
 	   $.ajax({  
 	   	type: "get",  
 			// 老麦提供接口
 			url: "data/bbs_li.json",  
 			dataType: "json",
-			data:update_count*8, //每次加载最后一条的索引值
+			// data:update_count, //每次加载最后一条的索引值
 			success: function (res) {  
 				
 				var len = res.item.length;
@@ -74,7 +72,9 @@ $(document).ready(function(){
 				$('.left-content .content').on('mouseover','img',function(){
 					var now_index = $(this).parents("li").index();
 					tooltip.pop(this, '#tooltip'+now_index, {position:1, offsetX:-20, effect:'slide'})
-				});          
+				}); 
+				all_page = res.page;   
+				console.log("Plus数据共有"+all_page+"页....")    
 			},
 			error:function(XMLHttpRequest, textStatus, errorThrown){  
 				console.log("请求对象XMLHttpRequest: " + XMLHttpRequest);  
@@ -83,15 +83,83 @@ $(document).ready(function(){
 			}  
 		});
 
-	 /* 点击加载更多逻辑 */
-	 $('.left-content .more a').click(function(){
-	 	update_count++;
-	 	$.ajax({  
-	   	type: "get",  
+	   /* 分页逻辑 */
+	   var content;
+	   $('.pagination-lump').on('click','li',function(){ 	
+	   	var lastflag = false;
+	   	var now_paginindex = $('.pagination-lump li.cur').index();
+	   	if($(this).index() == 11){
+	   		content = $('.pagination-lump').html();
+	   		var noww_paginindex = ++now_paginindex;
+	   		if(noww_paginindex == 11){
+	   			console.log("准备换页咯....");
+	   			var origin_page = $('.pagination-lump li.cur').find("p").html();
+	   			var new_page = parseInt(origin_page) + 10;
+	   			var page_count = 0;
+	   			if(new_page < all_page){
+	   				console.log("比JSON小咯....");
+	   				$('.pagination-lump li:eq(1)').addClass("cur").siblings().removeClass("cur");
+	   				for( var s = 1; s< origin_page; s++){
+	   					$('.pagination-lump li:eq('+s+')').find("p").html(++origin_page);
+	   					page_count++;
+	   					if(page_count == 10){
+	   						return;
+	   					}
+	   				}
+	   			}else{
+	   				content = $('.pagination-lump').html();
+	   				console.log("比JSON大咯....");
+	   				var ss = all_page - origin_page;
+	   				$('.pagination-lump li:eq(1)').addClass("cur").siblings().removeClass("cur");
+	   				for( var s = 1; s<= new_page; s++){
+	   					if(s<=ss){
+	   						$('.pagination-lump li:eq('+s+')').find("p").html(++origin_page);
+	   					}else{
+	   						$('.pagination-lump li:eq('+s+')').addClass("hide");
+	   						$('.pagination-lump li:eq(12)').removeClass("hide");
+	   					}
+	   				}
+	   				
+	   			}
+	   			return;
+	   		}
+	   		$('.pagination-lump li:eq('+noww_paginindex+')').addClass("cur").siblings().removeClass("cur");	
+	   		console.log("下一页....上个被点击的索引值为" + noww_paginindex);
+	   	}else if($(this).index() == 0){
+	   		content = $('.pagination-lump').html();
+	   		$('.pagination-lump li').removeClass("hide");
+	   		$('.pagination-lump li:eq(1)').addClass("cur").siblings().removeClass("cur");
+	   		for( var zero = 1; zero < $('.pagination-lump li.last').index()-1; zero++){
+	   			$('.pagination-lump li:eq('+zero+')').find("p").html(zero);
+	   		}
+	   		$('.pagination-lump li:eq(11)').find("p").html("下一页");
+	   		
+	   	}
+	   	else if($(this).index() == 12){
+	   		console.log("返回....");
+
+			$(".pagination-lump").empty().append(content);
+	   		 // $('.pagination-lump li').removeClass("hide");
+	   		 // $('.pagination-lump li:eq(1)').addClass("cur").siblings().removeClass("cur");
+	   		// for( var zero = all_page, ii = 1; zero >=all_page-10; zero--){
+	   		// 	ii++;
+	   		// 	$('.pagination-lump li:nth-last-child('+ii+')').find("p").html(zero);
+	   		// }
+	   	}
+	   	else{
+	   		content = $('.pagination-lump').html();
+	   		console.log("不是下一页....上个被点击的索引值为"+ now_paginindex)
+	   		$(this).addClass("cur").siblings().removeClass("cur");	
+	   	}
+	   		 var cur_pagin = $('.pagination-lump li.cur p').html(); //获取当前点击页数
+	   	 // var next_pagin = $('.pagination-lump li.cur p').html();
+	   	 $('.left-content .content ul').empty();   	
+	   	 $.ajax({  
+	   	 	type: "get",  
 			// 老麦提供接口
-			url: "data/bbs_li.json",  
+			url: "data/bbs_li2.json",   // 模拟第2页数据
 			dataType: "json",
-			data: update_count, /*初始化只加载8条，根据用户需要点击加载，才继续加载8条，以此类推*/
+			data: cur_pagin, /*初始化只加载8条，根据用户需要点击加载，才继续加载8条，以此类推*/
 			success: function (res) {  
 				var len = res.item.length;
 				var i = 0;
@@ -103,20 +171,18 @@ $(document).ready(function(){
 						$('.left-content li a.title').addClass("light");
 					}
 				}
-				update_count++;
-				console.log("动态列表加载完毕....");
 				$('.left-content .content').on('mouseover','img',function(){
 					var now_index = $(this).parents("li").index();
 					tooltip.pop(this, '#tooltip'+now_index, {position:1, offsetX:-20, effect:'slide'})
-				});          
+				}); 
 			},
 			error:function(XMLHttpRequest, textStatus, errorThrown){  
 				console.log("请求对象XMLHttpRequest: " + XMLHttpRequest);  
 				console.log("错误类型textStatus: " + textStatus);  
 				console.log("异常对象errorThrown: " + errorThrown);  
 			}  
-		});
-	 })
+		});   	
+	   	});
 
 	//$('.progress-lump .progress span').html(i);
 	// 模拟进度加载动画
