@@ -25,9 +25,9 @@ $(document).ready(function() {
 
 	$('.chat-list').on("click","li",function(){
 		if($(this).index()!= 0){
-				$('.chat-box').removeClass("hide");
-				var index= 2;
-				$('.chat-list li:eq('+index+')').addClass("sjb");
+			$('.chat-box').removeClass("hide");
+			var index= 2;
+			$('.chat-list li:eq('+index+')').addClass("sjb");
 				$(this).addClass("cur").siblings().removeClass("cur"); // 这里加多一行这个。
 			}
 		});
@@ -259,10 +259,11 @@ $(document).ready(function() {
 						$('#login-form').addClass("hide");
 						$('#modal-alert1').iziModal('open');
 						$('#modal-alert1').on('click','.iziModal-button-close',function(){
-							$('.border-lump li:eq(0)').empty().html('<p class="fl">用户&nbsp;</p> <span class="phone fl"></span>');
-							$('.border-lump .phone').html(res.user_id.phone); // Json数据渲染
-							$('.border-lump ul').append('<li><a href="#">个人中心</li>')
-							$('.border-lump li:eq(1)').empty().html('<p class="cancel fl ml-30">注销</p>');
+							window.location.reload();
+							// $('.border-lump li:eq(0)').empty().html('<p class="fl">用户&nbsp;</p> <span class="phone fl"></span>');
+							// $('.border-lump .phone').html(res.user_id.phone); // Json数据渲染
+							// $('.border-lump ul').append('<li><a href="#">个人中心</li>')
+							// $('.border-lump li:eq(1)').empty().html('<p class="cancel fl ml-30">注销</p>');
 						})
 					}else{
 						$('#modal-alert2').iziModal('open');

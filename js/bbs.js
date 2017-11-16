@@ -137,8 +137,10 @@ $(document).ready(function(){
 	   	}
 	   	else if($(this).index() == 12){
 	   		console.log("返回....");
-
-			$(".pagination-lump").empty().append(content);
+	   		if($('.pagination-lump li.cur').index() != 1 )
+			{
+				$(".pagination-lump").empty().append(content);
+			}
 	   		 // $('.pagination-lump li').removeClass("hide");
 	   		 // $('.pagination-lump li:eq(1)').addClass("cur").siblings().removeClass("cur");
 	   		// for( var zero = all_page, ii = 1; zero >=all_page-10; zero--){

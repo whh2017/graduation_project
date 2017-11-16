@@ -1,4 +1,24 @@
 
+/* 加载Plus排行数据 */
+$.ajax({  
+	type: "get",  
+			// 老麦提供接口
+			url: "data/index_rank.json",  
+			dataType: "json",
+			success: function (res) {  
+				var i = 0;
+				for( i = 0; i < 10; i++){
+					$('.left-navgation ul').append('<li class="clearfix"><em class="fl">'+res.item[i].number+'</em><a href="#" class="fl">'+res.item[i].title+'</a></li>');
+					$('.left-navgation li a').attr("href",res.item[i].a_href);
+				}
+				console.log("Rank列表加载完毕....");
+			},
+			error:function(XMLHttpRequest, textStatus, errorThrown){  
+				console.log("请求对象XMLHttpRequest: " + XMLHttpRequest);  
+				console.log("错误类型textStatus: " + textStatus);  
+				console.log("异常对象errorThrown: " + errorThrown);  
+			}  
+		});
 
 /* 轮播  */ 
 		var timer = setInterval("roundslide()",4000); //指定4秒刷新一次

@@ -26,13 +26,23 @@
 .main-news li a:hover{ color: red;}
 
 .news-item{ margin: 10px auto;}
-.news-item li{ width: 620px; padding: 15px;}
-.news-item li:hover{ background: #f8f8f8;}
-.news-item li p{ margin:0 8px; font-size: 12px; color: #bbb;}
-.news-item li p.update{ margin-right: 20px;}
-.news-item .txt{ height: 45px; line-height: 45px; color: #404040; font-size: 20px; font-weight: bold;} 
-.news-item .txt:hover{ color: #ff6600;}
-.news-item .img-box{ position: relative; float: left; width: 190px; height: 120px; margin: 0 16px 10px 0; overflow: hidden;} 
-.news-item .img-box img{ position: absolute; width: 190px; height: 120px; -webkit-transition: all .8s; -o-transition: all .8s; transition: all .8s overflow: hidden;}
-.news-item .img-box img:hover{ -webkit-transform: scale(1.2); -ms-transform: scale(1.2); transform: scale(1.2);}
+.news-item .list{ width: 650px;}
+.news-item .list li{ width: 620px; padding: 15px;}
+.news-item .list li:hover{ background: #f8f8f8;}
+.news-item .list li p{ margin:0 8px; font-size: 12px; color: #bbb;}
+.news-item .list li p.update{ margin-right: 20px;}
+.news-item .list .txt{ height: 45px; line-height: 45px; color: #404040; font-size: 20px; font-weight: bold;} 
+.news-item .list .txt:hover{ color: #ff6600;}
+.news-item .list .img-box{ position: relative; float: left; width: 190px; height: 120px; margin: 0 16px 10px 0; overflow: hidden;} 
+.news-item .list .img-box img{ position: absolute; width: 190px; height: 120px; -webkit-transition: all .8s; -o-transition: all .8s; transition: all .8s ;overflow: hidden;}
+.news-item .list .img-box img:hover{ -webkit-transform: scale(1.2); -ms-transform: scale(1.2); transform: scale(1.2);}
 
+.left-navgation{ background: #f8f8f8; padding: 20px; margin-right: 20px;}
+.left-navgation h2{ position: relative; height: 25px; line-height: 25px; padding-left: 10px; border-left: solid 5px green; font-size: 18px; color: #000;}
+.left-navgation h2 a{ position: absolute; right: -10px; bottom: -5px; color: #589bab; font-size: 12px; float: right;}
+.left-navgation h2 a:hover{ color: #ff6600;}
+.left-navgation ul{ margin-top: 15px; border-top: solid 1px #dfdfdf;}
+.left-navgation li{ padding: 30px 5px 5px 5px; margin-bottom: 5px;}
+.left-navgation li em{ margin-right: 20px; color: #0f9e59; font-size: 22px; font-family: "Georgia";}
+.left-navgation li a{ display: block; width: 150px; color: #666; font-size: 14px;}
+.left-navgation li a:hover{ color: #f33;}
