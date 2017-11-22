@@ -94,7 +94,7 @@
 
 .item img{ width: 40px; height: 40px;}
 
-.chat-box{ position: absolute; top: 0; left: 130px; bottom: 0; z-index: 15; width: 486px; background: #FFF; border: solid 1px #eee; background: #f5f5f5;}
+.chat-box{ position: absolute; top: 0; left: 130px; bottom: 0; z-index: 30; width: 486px; background: #FFF; border: solid 1px #eee; background: #f5f5f5;}
 .chat-box .operate span{ display: block; width: 22px; font-size: 17px; cursor: pointer; text-align: center;}
 .chat-box .operate span:hover{ background: #ff3b30; color: #FFF;}
 

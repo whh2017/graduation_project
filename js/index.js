@@ -84,3 +84,13 @@ $.ajax({
         */  
 
 
+/* 悬停出现文字框提示效果 */
+	$('.right-navigation li a').hover(function(){
+		$(this).find('.txt').addClass("hide");
+		// $('.txt-mask').removeClass("hide");
+		$(this).find('.txt-mask').stop().animate({ height:"100%"},200);
+	},function(){
+		// $('.txt-mask').addClass("hide");
+		$(this).find('.txt-mask').stop().animate({ height:"0"},200);
+		$(this).find('.txt').removeClass("hide");
+	});

@@ -196,10 +196,6 @@ $(document).ready(function() {
 
 	/* 注册 */
 	$('#register-form .btn').click(function(){
-		if($('#register-form').hasClass("wobble")){
-			$('#register-form').removeClass("wobble");
-		}
-
 		var user_data = {
 			phone: $('#register-form #mobile').val(),
 			password: $('#register-form #password').val()
@@ -207,35 +203,35 @@ $(document).ready(function() {
 		var user_sdata = JSON.stringify(user_data);
 		if(($('#register-form #mobile').hasClass("success")) && ($('#register-form #code').hasClass("success")) && ($('#register-form #password').hasClass("success")) && ($('#register-form #confirm').hasClass("success"))){
 			/* 模拟注册成功之后的效果 */
-			UnMaskIt($('.mask'));
-				//window.location.reload();
-				$('#register-form').addClass("hide");
-				$('#modal-alert').iziModal('open');
+			$.ajax({  
+				type: "post",  
+				url: "data/enroll.json",  
+				dataType: "json",
+				contentType : "application/json; charset=UTF-8",  
+				data: user_sdata,  
+				success: function (res) {  
+					if(res.flag){
+						console.log("注册成功");
+								UnMaskIt($('.mask'));
+						//window.location.reload();
+						$('#register-form').addClass("hide");
+						$('#modal-alert').iziModal('open');
 
-				/* 存储数据 */
-				var b_data = JSON.stringify(user_data);
-				storage.setItem("data",b_data);
-				console.log(storage.data);
-				$('#modal-alert').on('click','.iziModal-button-close',function(){
-				//UnMaskIt($('.mask'));
-				window.location.reload();
-			});
-	        /*   上面函数写在success函数里面。
-	        $.ajax({  
-	          type: "post",  
-	          url: "麦贺良你的接口呢我曹尼玛",  
-	          dataType: "json",
-	          contentType : "application/json; charset=UTF-8",  
-	          data: user_sdata,  
-	          success: function (res) {  
-
-	                  }  
-	            });
-	            */
-	        }else{
-	        	alert("信息不全，请填写完整。");
-	        }
-	    });
+						/* 存储数据 */
+						var b_data = JSON.stringify(user_data);
+						storage.setItem("data",b_data);
+						console.log(storage.data);
+						$('#modal-alert').on('click','.iziModal-button-close',function(){
+						//UnMaskIt($('.mask'));
+							window.location.reload(); 
+							});
+						}
+					}
+			});  
+		}else{
+			alert("信息不全，请填写完整。");
+		}
+	});
 	
 	/* 登录 */
 	$('#login-form').on('click','.btn',function(){

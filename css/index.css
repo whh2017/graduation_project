@@ -38,7 +38,7 @@
 .news-item .list .img-box img:hover{ -webkit-transform: scale(1.2); -ms-transform: scale(1.2); transform: scale(1.2);}
 
 .left-navgation{ background: #f8f8f8; padding: 20px; margin-right: 20px;}
-.left-navgation h2{ position: relative; height: 25px; line-height: 25px; padding-left: 10px; border-left: solid 5px green; font-size: 18px; color: #000;}
+.left-navgation h2, .right-navigation h2{ position: relative; height: 25px; line-height: 25px; padding-left: 10px; border-left: solid 5px green; font-size: 18px; color: #000;}
 .left-navgation h2 a{ position: absolute; right: -10px; bottom: -5px; color: #589bab; font-size: 12px; float: right;}
 .left-navgation h2 a:hover{ color: #ff6600;}
 .left-navgation ul{ margin-top: 15px; border-top: solid 1px #dfdfdf;}
@@ -46,3 +46,18 @@
 .left-navgation li em{ margin-right: 20px; color: #0f9e59; font-size: 22px; font-family: "Georgia";}
 .left-navgation li a{ display: block; width: 150px; color: #666; font-size: 14px;}
 .left-navgation li a:hover{ color: #f33;}
+
+.right-navigation{ width: 275px;}
+.right-navigation ul{ margin-top: 30px;}
+.right-navigation li{ position: relative; width: 260px; margin-bottom: 30px;}
+.right-navigation li a{ display: block;}
+.right-navigation li img{ width: 260px; height: 150px;}
+
+.txt-mask{ position: absolute; left: 0; bottom: 0px; width: 100%; height: 0%; background: #9400D3; opacity: .85; filter: Alpha(opacity=85);}
+.txt-mask p{ padding: 10px 0; margin: 30px 20px 0 20px; font-size: 24px; color: #fff; text-align: center; border-top: solid 1px #fff; border-bottom: solid 1px #fff; font-weight: bold;}
+.txt-mask span{ font-size: 14px; color: #fff;}
+
+.friendly-link{ margin-top: 40px; width: 200px;}
+.friendly-link h2{ margin-bottom: 10px;}
+.friendly-link a{ float: left; display: block; margin: 5px 3px; color: #09f; font-size: 14px; text-align: center;}
+.friendly-link a:hover{ opacity: .7; filter: Alpha(opacity=700); }
