@@ -60,4 +60,10 @@
 .friendly-link{ margin-top: 40px; width: 200px;}
 .friendly-link h2{ margin-bottom: 10px;}
 .friendly-link a{ float: left; display: block; margin: 5px 3px; color: #09f; font-size: 14px; text-align: center;}
-.friendly-link a:hover{ opacity: .7; filter: Alpha(opacity=700); }
+.friendly-link a:hover{ opacity: .7; filter: Alpha(opacity=70);}
+
+/* 新闻详情页 */
+.left-news{ width: 870px; padding:10px; margin-right: 20px; background: #fff;}
+.news-item.mt-100{ margin-top: 50px;}
+
+.left-news h2{ margin-bottom: 30px; padding-bottom: 10px; border-bottom: solid 1px #dfdfdf; color: #333; font-size: 48px;}
