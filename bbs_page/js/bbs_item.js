@@ -42,8 +42,34 @@ $(document).ready(function(){
 		console.log("本地无缓存数据....");
 		fllag = false;
 	}
+	$('.comment-lump .mes ul').empty();
 
-
+	/* 刷新用户评论逻辑 */
+	$.ajax({  
+			type: "get",  
+			// 老麦提供接口
+			url: "../../data/bbs_conment.json",  
+			dataType: "json",
+			success: function (res) {  
+	                //alert(res);  
+	                //layer.close(ii); 
+	                if(res.flag){
+	                	console.log("刷新评论...");
+	                	console.log(res.count);
+	                	$('.comment-lump .tt em').html(res.count);
+	                	var com_length = res.comment_mes.length;
+	                	for( var com_i = 0 ; com_i < com_length ; com_i++)
+	                	{
+	                		$('.comment-lump .mes ul').append('<li class="clearfix"><div class="img-box fl"><img src='+res.comment_mes[com_i].head_img+' class="comment-img"></div><div class="txt fl"><span class="comment-name">'+res.comment_mes[com_i].comment_name+'</span><span class="comment-time">'+res.comment_mes[com_i].comment_time+'</span><p class="comment-txt">'+res.comment_mes[com_i].comment_content+'</p></div>			</li>')
+	                	}
+	                }else{
+	                	console.log("没有评论....");
+	                }	           
+	            },
+	            error: function(res){
+	            	console.log("ajax请求失败....");
+	            }
+	        });
 	// 模拟加载开发进度
 	//$('.progress-lump .progress span').html(i);
 	var j = 0;

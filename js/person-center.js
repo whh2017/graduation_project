@@ -18,6 +18,9 @@ $(document).ready(function(){
 	                //layer.close(ii); 
 	                if(res.flag){
 	                	console.log("该用户手机号码存在....");
+	                	$('.welcome-lump .phone').html(res.user_id.phone);
+	                	$('.welcome-lump .point').html(res.user_id.point);
+	                	$('.show-message .id').html(res.user_id.id);
 	                	$('.show-message .name').html(res.user_id.name);
 	                	$('.show-message .sex').html(res.user_id.sex);
 	                	$('.show-message .year').html(res.user_id.year);
@@ -171,13 +174,16 @@ $(document).ready(function(){
 /* 更改用户密码 后台校验密码是否为当前用户密码 */
 $('.edit-content .origin').blur(function(){
 	var origin_pw = $(this).val();
-	var origin_spw = JSON.stringify(origin_pw);
+	var origin_spw ={
+		password: $('.edit-content .origin').val(),
+		phone: $('.welcome-lump .phone').html()
+	}
 	var $_this = $(this);
 	$.ajax({  
 		type: "get",  
 		url: "data/password.json",  
 		dataType: "json",
-		data: origin_spw,  
+		data: JSON.stringify(origin_spw),  
 		success: function (res) {  
 			if(res.flag){
 				console.log("输入密码为当前用户账户密码....");
@@ -254,6 +260,7 @@ $("#modal-alert2").iziModal({
 
 $('.change-message').click(function(){
 	var user_mes = {
+		phone: $('.welcome-lump .phone').html(),
 		name: $('.edit-content #name').val(),
 		sex: $('.edit-content #sex').val(),
 		year: $('.edit-content #year').val(),
@@ -280,10 +287,10 @@ $('.change-message').click(function(){
 		}
 	});
 });
-
 /* 更改密码 */
 $('.change-pw').click(function(){
 	var user_pw = {
+		phone: $('.welcome-lump .phone').html(),
 		origin: $('.change-password .origin').val(),
 		now: $('.change-password .now').val(),
 		confirm: $('.change-password .confirm').val(),

@@ -73,7 +73,7 @@ $(document).ready(function(){
 					var now_index = $(this).parents("li").index();
 					tooltip.pop(this, '#tooltip'+now_index, {position:1, offsetX:-20, effect:'slide'})
 				}); 
-				all_page = res.page;   
+				all_page = res.total;   
 				console.log("Plus数据共有"+all_page+"页....")    
 			},
 			error:function(XMLHttpRequest, textStatus, errorThrown){  
@@ -119,7 +119,7 @@ $(document).ready(function(){
 	 //   						$('.pagination-lump li:eq(12)').removeClass("hide");
 	 //   					}
 	 //   				}
-	   				
+
 	 //   			}
 	 //   			return;
 	 //   		}
@@ -133,7 +133,7 @@ $(document).ready(function(){
 	 //   			$('.pagination-lump li:eq('+zero+')').find("p").html(zero);
 	 //   		}
 	 //   		$('.pagination-lump li:eq(11)').find("p").html("下一页");
-	   		
+
 	 //   	}
 	 //   	else if($(this).index() == 12){
 	 //   		console.log("返回....");
@@ -395,6 +395,181 @@ $(document).ready(function(){
 				//UnMaskIt($('.mask'));
 				window.location.reload();
 			});
+
+	var in_index;
+	function update(){
+		console.log("当前传后台的值是" + $('.pagination-lump li').eq(++in_index).find("p").html());
+		$.ajax({  
+			type: "get",  
+				// 老麦提供接口
+				url: "data/bbs_li.json",  
+				data: JSON.stringify($('.pagination-lump li').eq(++in_index).find("p").html()),
+				dataType: "json",
+				// data:update_count, //每次加载最后一条的索引值
+				success: function (res) {  
+					$('.left-content .content ul').empty();
+					var len = res.item.length;
+					var i = 0;
+					for( i = 0; i < len; i++){
+						$('.left-content .content ul').append('<li class="clearfix"><div class="icon fl"><a href="#"><img src='+res.item[i].img+'></a></div><div class="fl"><div class="clearfix tt"><span class="nor fl">'+res.item[i].topic+'</span><a class="title fl" href="#">'+res.item[i].tt+'</a></div><div class="txt"><p><span class="w">'+res.item[i].user_name+'</span>&nbsp;发表于：<span class="time">'+res.item[i].start_time+'</span>&nbsp;最新回复：<span class="new">'+res.item[i].lastest_time+'</span></p></div></div><div class="fr mt-10 mr-10"><span class="comment">'+res.item[i].comment+'</span></div><div style="display: none;" class="tooltip"><div id='+"tooltip"+i+'><div class="clearfix"><div class="img-box fl"><img src='+res.item[i].img+'><div class="talk clearfix"><a href="#" class="fl">+私聊</a></div></div><div class="h-102 fl"><p class="name">'+res.item[i].user_mes.name+'</p><p class="school">'+res.item[i].user_mes.school+'</p><span class="sex">'+res.item[i].user_mes.sex+'</span><span class="year ml-5">'+res.item[i].user_mes.year+'<span><p>上次登陆时间：<span class="time">2017-10-17</span></p></div></div></div></div></li>');
+						// top 表示是否为置顶
+						if(res.item[i].top){
+							$('.left-content li span.nor').removeClass("nor").addClass("kind");
+							$('.left-content li a.title').addClass("light");
+						}
+						$('.left-content li a.title').attr("href",res.item[i].a_href);
+					}
+					console.log("动态列表加载完毕....");
+					$('.left-content .content').on('mouseover','img',function(){
+						var now_index = $(this).parents("li").index();
+						tooltip.pop(this, '#tooltip'+now_index, {position:1, offsetX:-20, effect:'slide'})
+					}); 
+					all_page = res.total;   
+					console.log("Plus数据共有"+all_page+"页....")    
+				},
+				error:function(XMLHttpRequest, textStatus, errorThrown){  
+					console.log("请求对象XMLHttpRequest: " + XMLHttpRequest);  
+					console.log("错误类型textStatus: " + textStatus);  
+					console.log("异常对象errorThrown: " + errorThrown);  
+				}  
+			});
+	}
+	/* 分页 */
+	var origin_content = $('.pagination-lump').html();
+	$('.pagination-lump').on('click','li',function(){
+		console.log("分页逻辑开始....");
+		in_index = $(this).index();
+		$(this).addClass("cur").siblings().removeClass("cur");
+					if( in_index > 1 && in_index < 12){  //页数被点击
+						console.log("当前页数为" + --in_index);
+						update();
+						
+					}else if(in_index == 0){     //首页被点击
+						console.log("首页....");
+						$('.pagination-lump').empty().append(origin_content);
+						in_index = 1;
+						$.ajax({  
+							type: "get",  
+				// 老麦提供接口
+				url: "data/bbs_li.json",  
+				data: JSON.stringify(in_index),
+				dataType: "json",
+				// data:update_count, //每次加载最后一条的索引值
+				success: function (res) {  
+					$('.left-content .content ul').empty();
+					var len = res.item.length;
+					var i = 0;
+					for( i = 0; i < len; i++){
+						$('.left-content .content ul').append('<li class="clearfix"><div class="icon fl"><a href="#"><img src='+res.item[i].img+'></a></div><div class="fl"><div class="clearfix tt"><span class="nor fl">'+res.item[i].topic+'</span><a class="title fl" href="#">'+res.item[i].tt+'</a></div><div class="txt"><p><span class="w">'+res.item[i].user_name+'</span>&nbsp;发表于：<span class="time">'+res.item[i].start_time+'</span>&nbsp;最新回复：<span class="new">'+res.item[i].lastest_time+'</span></p></div></div><div class="fr mt-10 mr-10"><span class="comment">'+res.item[i].comment+'</span></div><div style="display: none;" class="tooltip"><div id='+"tooltip"+i+'><div class="clearfix"><div class="img-box fl"><img src='+res.item[i].img+'><div class="talk clearfix"><a href="#" class="fl">+私聊</a></div></div><div class="h-102 fl"><p class="name">'+res.item[i].user_mes.name+'</p><p class="school">'+res.item[i].user_mes.school+'</p><span class="sex">'+res.item[i].user_mes.sex+'</span><span class="year ml-5">'+res.item[i].user_mes.year+'<span><p>上次登陆时间：<span class="time">2017-10-17</span></p></div></div></div></div></li>');
+						// top 表示是否为置顶
+						if(res.item[i].top){
+							$('.left-content li span.nor').removeClass("nor").addClass("kind");
+							$('.left-content li a.title').addClass("light");
+						}
+						$('.left-content li a.title').attr("href",res.item[i].a_href);
+					}
+					console.log("动态列表加载完毕....");
+					$('.left-content .content').on('mouseover','img',function(){
+						var now_index = $(this).parents("li").index();
+						tooltip.pop(this, '#tooltip'+now_index, {position:1, offsetX:-20, effect:'slide'})
+					}); 
+					all_page = res.total;   
+					console.log("Plus数据共有"+all_page+"页....")    
+				},
+				error:function(XMLHttpRequest, textStatus, errorThrown){  
+					console.log("请求对象XMLHttpRequest: " + XMLHttpRequest);  
+					console.log("错误类型textStatus: " + textStatus);  
+					console.log("异常对象errorThrown: " + errorThrown);  
+				}  
+			});
+					}else if(in_index == 13){
+						in_index = 999;
+						console.log("当前传后台的值是" + in_index);
+						$.ajax({  
+							type: "get",  
+				// 老麦提供接口
+				url: "data/bbs_li.json",  
+				data: JSON.stringify(in_index),
+				dataType: "json",
+				// data:update_count, //每次加载最后一条的索引值
+				success: function (res) {  
+					$('.left-content .content ul').empty();
+					var len = res.item.length;
+					var i = 0;
+					for( i = 0; i < len; i++){
+						$('.left-content .content ul').append('<li class="clearfix"><div class="icon fl"><a href="#"><img src='+res.item[i].img+'></a></div><div class="fl"><div class="clearfix tt"><span class="nor fl">'+res.item[i].topic+'</span><a class="title fl" href="#">'+res.item[i].tt+'</a></div><div class="txt"><p><span class="w">'+res.item[i].user_name+'</span>&nbsp;发表于：<span class="time">'+res.item[i].start_time+'</span>&nbsp;最新回复：<span class="new">'+res.item[i].lastest_time+'</span></p></div></div><div class="fr mt-10 mr-10"><span class="comment">'+res.item[i].comment+'</span></div><div style="display: none;" class="tooltip"><div id='+"tooltip"+i+'><div class="clearfix"><div class="img-box fl"><img src='+res.item[i].img+'><div class="talk clearfix"><a href="#" class="fl">+私聊</a></div></div><div class="h-102 fl"><p class="name">'+res.item[i].user_mes.name+'</p><p class="school">'+res.item[i].user_mes.school+'</p><span class="sex">'+res.item[i].user_mes.sex+'</span><span class="year ml-5">'+res.item[i].user_mes.year+'<span><p>上次登陆时间：<span class="time">2017-10-17</span></p></div></div></div></div></li>');
+						// top 表示是否为置顶
+						if(res.item[i].top){
+							$('.left-content li span.nor').removeClass("nor").addClass("kind");
+							$('.left-content li a.title').addClass("light");
+						}
+						$('.left-content li a.title').attr("href",res.item[i].a_href);
+					}
+					console.log("动态列表加载完毕....");
+					$('.left-content .content').on('mouseover','img',function(){
+						var now_index = $(this).parents("li").index();
+						tooltip.pop(this, '#tooltip'+now_index, {position:1, offsetX:-20, effect:'slide'})
+					}); 
+					all_page = res.total;   
+					console.log("Plus数据共有"+all_page+"页....")    
+				},
+				error:function(XMLHttpRequest, textStatus, errorThrown){  
+					console.log("请求对象XMLHttpRequest: " + XMLHttpRequest);  
+					console.log("错误类型textStatus: " + textStatus);  
+					console.log("异常对象errorThrown: " + errorThrown);  
+				}  
+			});
+						
+					}else if(in_index == 1){
+						$('.pagination-lump li').removeClass("hide");
+						console.log("上一页....");
+						var cur_first = $('.pagination-lump li').eq(++in_index).find("p").html();
+						var after_first = cur_first;
+						console.log(cur_first);
+						var cha = $('.pagination-lump li').eq(++in_index).find("p").html() - 10;
+						if(cha <= 0){
+							console.log("当前为第一页！");
+						}else if(cha>0){
+							for(var last = 11; last >= 2; last--){
+								$('.pagination-lump li').eq(last).find("p").html(--after_first);
+							}
+						}	
+					}else if(in_index == 12){
+						var no_next = false;
+						console.log("下一页....");
+						var cur_last = $('.pagination-lump li').eq(--in_index).find("p").html();
+						console.log(cur_last);
+						var after_last = cur_last;
+						var duo = cur_last + 10;
+						if(duo <= all_page){
+							console.log("1");
+							var ii = all_page % 10;
+							for( var front = 2; front < 12; front++){
+								$('.pagination-lump li').eq(front).find("p").html(++cur_last);
+								var after_last = cur_last;
+								var duo = cur_last + 10;
+								if($('.pagination-lump li').eq(front).find("p").html() > all_page){
+									$('.pagination-lump li').eq(front).addClass("hide");
+								}
+							}
+						}else{
+							console.log("2");
+							$('.pagination-lump li').each(function(){
+								if($(this).find("p").html() == all_page){
+									no_next = true;
+								}	
+							});
+							if(!no_next){
+								for( var front = 2; front < 12; front++){
+									$('.pagination-lump li').eq(front).find("p").html(++cur_last);
+								}
+							}
+						}
+
+					}
+					
+					
+				});
 });
 /* 广告轮播效果 */
 var timer = setInterval("roundslide()",4000); //指定4秒刷新一次
