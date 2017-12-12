@@ -2,7 +2,7 @@
 	"item":[
 		{
 		"img":"images/local/maiheliang.jpg",
-		"topic":"全站置顶2",
+		"topic":"全站置顶1111",
 		"tt":"围诚Plus BetaV1.0 正式版发布",
 		"user_name":"卢本伟",
 		"start_time":"2017-9-10",
@@ -121,7 +121,7 @@
 		},
 		{
 		"img":"images/local/maiheliang.jpg",
-		"topic":"谈天说地2",
+		"topic":"谈天说地222222",
 		"tt":"恭喜RNG WE晋级决赛会师鸟巢！",
 		"user_name":"德云色",
 		"start_time":"2017-10-10",
@@ -136,6 +136,5 @@
 			"school":"广州商学院"
 			}
 		}
-	],
-	"page":"32"
+	]
 }

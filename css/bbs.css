@@ -47,12 +47,15 @@
 .left-content .more button.add{ background: #666;}
 .left-content .more button:hover{ background: #30cfd0; -webkit-transition: all .3s; -o-transition: all .3s; transition: all .3s;}
 */
-.pagination-lump{ margin-top: 30px; padding-left: 5px;}
+.pagination-lump{ width: 400px; margin: 30px auto 0;}
 .pagination-lump li{ float: left; margin-right: 5px; margin-bottom: 5px;}
 .pagination-lump li p{ padding: 0 10px; height: 30px; line-height: 30px; border: solid 1px #dfdfdf; text-align: center; cursor: pointer; color: #666;}
 /*.pagination-lump li.cur p{ color: #fff; background: #30cfd0;}*/
 .pagination-lump li p:hover{ color: #fff; background: #30cfd0; -webkit-transition: all .3s; -o-transition: all .3s; transition: all .3s;}
 /*.pagination-lump li:nth-last-child(3){ background: #ff6600;}*/
+.pagination-lump .ipt{ display: block; width: 100px; height: 30px; border: solid 1px #dfdfdf; padding-left: 5px;}
+
+.cur-page span{ color: red;}
 .right-content{ width: 300px; margin: 10px 0 0 10px;}
 
 .progress-lump{ background: #fff; padding-bottom: 1px;}
