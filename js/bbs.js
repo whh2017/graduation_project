@@ -4,6 +4,7 @@ $(document).ready(function(){
 	var read_data = storage.getItem("data");
 	var data_obj = JSON.parse(read_data);
 	var fllag = false; // 是否有缓存标志位。
+	var user_phone;
 	var all_page;
 	if(read_data){
 		console.log("本地有缓存数据，正在进行ajax请求校验....");
@@ -30,6 +31,7 @@ $(document).ready(function(){
 	                		$('.head').append('<a class="ml-10 over" href="javascript:void(0);">注销</a>')
 	                		fllag = true;
 	                	}
+	                	user_phone = res.user_id.phone;
 	                }else{
 	                	console.log("该用户手机号码不存在....");
 	                	fllag = false;
@@ -420,6 +422,7 @@ $(document).ready(function(){
 		//uploader.upload();
 		var sender_time = new Date();
 		var send_plus = {
+			user_phone: user_phone,
 			sender_id : $('.header-box li img').attr("id"),
 			plus_type : $('.editor-lump select').val(),
 			plus_title : $('.editor-lump .ipt').val(),

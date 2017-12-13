@@ -4,6 +4,7 @@ $(document).ready(function(){
 	var read_data = storage.getItem("data");
 	var data_obj = JSON.parse(read_data);
 	var fllag = false; // 是否有缓存标志位。
+	var user_phone;
 	if(read_data){
 		console.log("本地有缓存数据，正在进行ajax请求校验....");
 		$.ajax({  
@@ -29,6 +30,7 @@ $(document).ready(function(){
 	                		$('.head').append('<a class="ml-10 over" href="javascript:void(0);">注销</a>')
 	                		fllag = true;
 	                	}
+	                	user_phone = res.user_id.phone;
 	                }else{
 	                	console.log("该用户手机号码不存在....");
 	                	fllag = false;
@@ -140,6 +142,7 @@ $(document).ready(function(){
 			   帖子显示时间格式为 XXXX-XX-XX 传给你的是为 XXXX/XX/XX 处理一下。
 			*/
 			var comment_mes = {
+				user_phone: user_phone,
 				user_id : $('.header-box li img').attr("id"),
 				comment_txt : $('.report-comment textarea').val(),
 				comment_time : comment_nowtime.toLocaleDateString()
