@@ -61,13 +61,13 @@ $(document).ready(function(){
 				var len = res.item.length;
 				var i = 0;
 				for( i = 0; i < len; i++){
-					$('.left-content .content ul').append('<li class="clearfix"><div class="icon fl"><a href="#"><img src='+res.item[i].img+'></a></div><div class="fl"><div class="clearfix tt"><span class="nor fl">'+res.item[i].topic+'</span><a class="title fl" href="#">'+res.item[i].tt+'</a></div><div class="txt"><p><span class="w">'+res.item[i].user_name+'</span>&nbsp;发表于：<span class="time">'+res.item[i].start_time+'</span>&nbsp;最新回复：<span class="new">'+res.item[i].lastest_time+'</span></p></div></div><div class="fr mt-10 mr-10"><span class="comment">'+res.item[i].comment+'</span></div><div style="display: none;" class="tooltip"><div id='+"tooltip"+i+'><div class="clearfix"><div class="img-box fl"><img src='+res.item[i].img+'><div class="talk clearfix"><a href="#" class="fl">+私聊</a></div></div><div class="h-102 fl"><p class="name">'+res.item[i].user_mes.name+'</p><p class="school">'+res.item[i].user_mes.school+'</p><span class="sex">'+res.item[i].user_mes.sex+'</span><span class="year ml-5">'+res.item[i].user_mes.year+'<span><p>上次登陆时间：<span class="time">2017-10-17</span></p></div></div></div></div></li>');
+					$('.left-content .content ul').append('<li class="clearfix"><div class="icon fl"><a href="#"><img src='+res.item[i].img+'></a></div><div class="fl"><div class="clearfix tt"><span class="nor fl">'+res.item[i].topic+'</span><a class="title fl" href="#">'+res.item[i].tt+'</a></div><div class="txt"><p><span class="w">'+res.item[i].user_name+'</span>&nbsp;发表于：<span class="time">'+res.item[i].start_time+'</span>&nbsp;最新回复：<span class="new">'+res.item[i].lastest_time+'</span></p></div></div><div class="fr mt-10 mr-10"><span class="comment">'+res.item[i].comment+'</span></div><div style="display: none;" class="tooltip"><div id='+"tooltip"+i+'><div class="clearfix"><div class="img-box fl"><img src='+res.item[i].img+'><div class="talk clearfix"><a href="javascript:void(0);" class="fl">+私聊</a></div></div><div class="h-102 fl"><p class="name">'+res.item[i].user_mes.name+'</p><p class="school">'+res.item[i].user_mes.school+'</p><span class="sex">'+res.item[i].user_mes.sex+'</span><span class="year ml-5">'+res.item[i].user_mes.year+'<span><p>上次登陆时间：<span class="time">2017-10-17</span></p></div></div></div></div></li>');
 					// top 表示是否为置顶
 					if(res.item[i].top){
 						$('.left-content li span.nor').removeClass("nor").addClass("kind");
 						$('.left-content li a.title').addClass("light");
 					}
-					$('.left-content li a.title').attr("href",res.item[i].a_href);
+					$('.left-content li a.title').eq(i).attr("href",res.item[i].a_href);
 				}
 				console.log("动态列表加载完毕....");
 				$('.left-content .content').on('mouseover','img',function(){
@@ -246,10 +246,10 @@ $(document).ready(function(){
 
 	// 模拟进度加载动画
 	var j = 0;
-	$('.progress .now').animate({width:"25%"},2500);
+	$('.progress .now').animate({width:"40%"},4000);
 	var t = setInterval(function(){
 		$('.progress-lump .progress span').html(++j);
-		if(j==25){
+		if(j==40){
 			clearInterval(t);
 		}
 	},100)

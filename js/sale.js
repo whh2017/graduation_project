@@ -1,5 +1,33 @@
 (function() {
 
+	/* 显示物品发布信息列表 */
+	var x;
+	$.ajax({  
+		type: "get",  
+			// 老麦提供接口
+			url: "data/sale_list.json",  
+			dataType: "json",
+			success: function (res) {  
+	                //alert(res);  
+	                //layer.close(ii); 
+	                if(res.flag){
+	                	console.log("刷新物品发布列表....");
+	                	console.log(res);
+	                	for( x = 0; x < res.list.length; x++)
+	                	{
+	                		$('.threeday-content .grid').append('<a href="#" data-path-hover="M 0,0 0,38 90,58 180.5,38 180,0 z"><figure><img src='+res.list[x].things_img+' /><svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 0 0 L 0 182 L 90 126.5 L 180 182 L 180 0 L 0 0 z "/></svg><figcaption><h2>'+res.list[x].things_title+'</h2><p>交易地点：<span>'+res.list[x].things_loc+'</span></p><p>发布时间：<span>'+res.list[x].fabu_time+'</span></p><button>查看详情</button></figcaption></figure></a>');
+	                		$('.threeday-content .grid a').eq(x).attr("href",res.list[x].things_a);
+	                	}  
+	                	init();     // 初始化SVG动画效果  	
+	                }           
+	            },
+	            error:function(XMLHttpRequest, textStatus, errorThrown){  
+	            	console.log("请求对象XMLHttpRequest: " + XMLHttpRequest);  
+	            	console.log("错误类型textStatus: " + textStatus);  
+	            	console.log("异常对象errorThrown: " + errorThrown);  
+	            }  
+	        });
+
 	function init() {
 		var speed = 300,
 		easing = mina.backout;
@@ -21,7 +49,6 @@
 		} );
 	}
 
-	init();
 
 })();
 
@@ -190,6 +217,9 @@ $(document).ready(function(){
 		overlayClose: false,
 		width: 400
 	});
+
+
+
 	/*  发布逻辑 */
 	$('.final_submit').click(function(){
 		//uploader.upload();

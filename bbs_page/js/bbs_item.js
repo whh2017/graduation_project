@@ -5,6 +5,7 @@ $(document).ready(function(){
 	var data_obj = JSON.parse(read_data);
 	var fllag = false; // 是否有缓存标志位。
 	var user_phone;
+	var plus_id = $('.bbs-container .article').attr('id');
 	if(read_data){
 		console.log("本地有缓存数据，正在进行ajax请求校验....");
 		$.ajax({  
@@ -48,8 +49,10 @@ $(document).ready(function(){
 
 	/* 刷新用户评论逻辑 */
 	$.ajax({  
-			type: "get",  
-			// 老麦提供接口
+		type: "get",  
+			// 老麦提供接口 
+			data: JSON.stringify(plus_id),  
+			// 帖子ID附在类名为 article div结构上。
 			url: "../../data/bbs_conment.json",  
 			dataType: "json",
 			success: function (res) {  
@@ -75,10 +78,10 @@ $(document).ready(function(){
 	// 模拟加载开发进度
 	//$('.progress-lump .progress span').html(i);
 	var j = 0;
-	$('.progress .now').animate({width:"25%"},2500);
+	$('.progress .now').animate({width:"40%"},4000);
 	var t = setInterval(function(){
 		$('.progress-lump .progress span').html(++j);
-		if(j==25){
+		if(j==40){
 			clearInterval(t);
 		}
 	},100)
@@ -125,10 +128,22 @@ $(document).ready(function(){
 		overlayClose: false,
 		width: 400
 	});
+	$("#modal-alert2").iziModal({
+		title: "评论成功！",
+		iconClass: 'icon-check',
+		headerColor: '#09f',
+		overlayClose: false,
+		width: 400
+	});
 
 	$('#modal-alert').on('click','.iziModal-button-close',function(){
 				//UnMaskIt($('.mask'));
 				self.location='../../login.html';
+			});
+
+		$('#modal-alert2').on('click','.iziModal-button-close',function(){
+				//UnMaskIt($('.mask'));
+				window.location.reload();
 			});
 
 
@@ -140,32 +155,34 @@ $(document).ready(function(){
 			var comment_nowtime = new Date();
 			/* 绑定当前登录用户id，传入后台 
 			   帖子显示时间格式为 XXXX-XX-XX 传给你的是为 XXXX/XX/XX 处理一下。
-			*/
-			var comment_mes = {
-				user_phone: user_phone,
-				user_id : $('.header-box li img').attr("id"),
-				comment_txt : $('.report-comment textarea').val(),
-				comment_time : comment_nowtime.toLocaleDateString()
-			}
-			if($('.report-comment textarea').val() != ''){
-					$.ajax({  
-						type: "post",  
+			   */
+			   var comment_mes = {
+			   	plus_id: plus_id,
+			   	user_phone: user_phone,
+			   	user_id : $('.header-box li img').attr("id"),
+			   	comment_txt : $('.report-comment textarea').val(),
+			   	comment_time : comment_nowtime.toLocaleDateString()
+			   }
+			   if($('.report-comment textarea').val() != ''){
+			   	$.ajax({  
+			   		type: "post",  
 				// 老麦提供接口
 				url: "../../data/moni.json",  
 				dataType: "json",
 				data: JSON.stringify(comment_mes),  
 				success: function (res) {  
-		                window.location.reload();
-		            },
-		            error: function(res){
-		            	console.log("ajax请求失败....");
-		            }
-		        });
-			}else{
-				alert("请输入评论内容！");
+					$('#modal-alert2').iziModal('open');
+
+				},
+				error: function(res){
+					console.log("ajax请求失败....");
+				}
+			});
+			   }else{
+			   	alert("请输入评论内容！");
+			   }
 			}
-		}
-	})
+		})
 });
 /* 广告轮播效果 */
 var timer = setInterval("roundslide()",4000); //指定4秒刷新一次
