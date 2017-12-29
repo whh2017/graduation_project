@@ -18,6 +18,8 @@ $(document).ready(function(){
 	                //layer.close(ii); 
 	                if(res.flag){
 	                	console.log("该用户手机号码存在....");
+
+	                	/* 编辑资料板块刷新数据 */
 	                	$('.welcome-lump .phone').html(res.user_id.phone);
 	                	$('.welcome-lump .point').html(res.user_id.point);
 	                	$('.show-message .id').html(res.user_id.id);
@@ -28,6 +30,7 @@ $(document).ready(function(){
 	                	$('.show-message .major').html(res.user_id.major);
 	                	$('.show-message .loc').html(res.user_id.loc);
 	                	$('.show-message .rank').html(res.user_id.rank);
+	                	$('.show-message .img-preview').attr("src",res.user_id.user_img)
 
 	                	$('.change #name').val(res.user_id.name);
 	                	$('.change #sex').val(res.user_id.sex);
@@ -36,6 +39,160 @@ $(document).ready(function(){
 	                	$('.change #major').val(res.user_id.major);
 	                	$('.change #loc').val(res.user_id.loc);
 	                	$('.change #rank').val(res.user_id.rank);
+
+	                	/* 物品发布板块刷新数据 */
+	                	var thing_len = res.things.length;
+	                	if(thing_len > 0){
+	                		$('.things-fabu .message h4').removeClass("hide");
+	                		for( var h = 0 ; h < thing_len ; h++){
+	                			$('.things-fabu .message ul').append('<li class="clearfix" id='+ res.things[h].things_id +'><a href="#" class="no-wrap fl">'+ res.things[h].title +'</a><p class="de fl">删除该条发布信息</p></li>');	                		
+	                		}
+	                		console.log("刷新物品发布信息列表....");
+	                	}else{
+	                		$('.things-fabu .no-fabu').removeClass("hide");
+	                	}
+
+	                	$('#modal-alert99').on('click','.iziModal-button-close',function(){
+						//UnMaskIt($('.mask'));
+						window.location.reload(); 
+					});
+	                	$('.things-fabu .message ul').on('click','li .de',function(){
+	                		var things_id = $(this).parent().attr('id');    
+	                		var re = confirm("其他用户即将不会浏览到这条发布信息，确定要删除吗？")
+	                		if (re == true){   
+	                			var del_thingsid = {
+	                				user_id : $('.welcome-lump .phone').html(),
+	                				mes_id: things_id
+	                			}   
+
+	                			$.ajax({  
+	                				type: "post",  
+									// 老麦提供接口
+									url: "data/password.json",  
+									dataType: "json",
+									data: JSON.stringify(del_thingsid), //每次加载最后一条的索引值
+									success: function (res) {  
+										if(res.flag){
+											$('#modal-alert99').iziModal('open');
+										}else{
+											alert("删除异常！请重试")
+										}
+									},
+									error:function(XMLHttpRequest, textStatus, errorThrown){  
+										console.log("请求对象XMLHttpRequest: " + XMLHttpRequest);  
+										console.log("错误类型textStatus: " + textStatus);  
+										console.log("异常对象errorThrown: " + errorThrown);  
+										alert("删除失败！请重试")
+									}  
+								});          			 
+	                		}
+	                		
+	                	});
+
+	                	/* Plus帖子板块刷新数据 */
+	                	var plus_len = res.plus.length;
+	                	if(plus_len > 0){
+	                		$('.plus-fabu .message h4').removeClass("hide");
+	                		for( var h = 0 ; h < plus_len ; h++){
+	                			$('.plus-fabu .message ul').append('<li class="clearfix" id='+ res.plus[h].things_id +'><a href="#" class="no-wrap fl">'+ res.plus[h].title +'</a><p class="de fl">删除该条发布信息</p></li>');	                		
+	                		}
+	                		console.log("刷新Plus列表....");
+	                	}else{
+	                		$('.plus-fabu .no-fabu').removeClass("hide");
+	                	}
+
+	                	$('#modal-alert99').on('click','.iziModal-button-close',function(){
+						//UnMaskIt($('.mask'));
+						window.location.reload(); 
+
+					});
+	                	$('#modal-alert98').on('click','.iziModal-button-close',function(){
+						//UnMaskIt($('.mask'));
+						window.location.reload(); 
+						
+					});
+	                	$('.plus-fabu .message ul').on('click','li .de',function(){
+	                		var plus_id = $(this).parent().attr('id');    
+	                		var re = confirm("其他用户即将不会浏览到这条Plus，确定要删除吗？")
+	                		if (re == true){   
+	                			var del_plusid = {
+	                				user_id : $('.welcome-lump .phone').html(),
+	                				mes_id: plus_id
+	                			}   
+
+	                			$.ajax({  
+	                				type: "post",  
+									// 老麦提供接口
+									url: "data/password.json",  
+									dataType: "json",
+									data: JSON.stringify(del_plusid), //每次加载最后一条的索引值
+									success: function (res) {  
+										if(res.flag){
+											$('#modal-alert99').iziModal('open');
+										}else{
+											alert("删除异常！请重试")
+										}
+									},
+									error:function(XMLHttpRequest, textStatus, errorThrown){  
+										console.log("请求对象XMLHttpRequest: " + XMLHttpRequest);  
+										console.log("错误类型textStatus: " + textStatus);  
+										console.log("异常对象errorThrown: " + errorThrown);  
+										alert("删除失败！请重试")
+									}  
+								});          			 
+	                		}
+	                		
+	                	});
+
+	                	/* 好友管理模块删除好友逻辑 */
+	                	var friends_len = res.friend.length;
+	                	if(friends_len > 0){
+	                		for( var h = 0 ; h < friends_len ; h++){
+	                			/* 用户若无填写昵称、则显示“ 用户+ 注册手机号码 ” */
+	                			if( res.friend[h].friend_name == ""){
+	                				$('.friend-manage .friend-list').append('<li id='+ res.friend[h].friend_id+'><img><div class="mes"><p>用户'+ res.friend[h].friend_phone+'</p></div><div class="del-friend">删除好友</div></li>');
+	                			}else{
+	                				$('.friend-manage .friend-list').append('<li id='+ res.friend[h].friend_id+'><img><div class="mes"><p>'+ res.friend[h].friend_name+'</p></div><div class="del-friend">删除好友</div></li>');
+	                			}
+	                			$('.friend-list li').eq(h).find("img").attr('src', res.friend[h].friend_img);
+	                		}
+	                		console.log("刷新好友列表....");
+	                	}else{
+	                		$('.friend-manage .no-friend').removeClass("hide");
+	                	}
+
+	                	$('.friend-manage .friend-list').on('click','li .del-friend',function(){
+	                		var curfriend_id = $(this).parent().attr('id');    
+	                		var ren = confirm("删除之后你将看不到之前与Ta的聊天记录，确定要删除吗？")
+	                		if (ren == true){   
+	                			var del_friendsid = {
+	                				user_id : $('.welcome-lump .phone').html(),
+	                				mes_id: curfriend_id
+	                			}   
+
+	                			$.ajax({  
+	                				type: "post",  
+									// 老麦提供接口
+									url: "data/password.json",  
+									dataType: "json",
+									data: JSON.stringify(del_friendsid), //每次加载最后一条的索引值
+									success: function (res) {  
+										if(res.flag){
+											$('#modal-alert98').iziModal('open');
+										}else{
+											alert("删除异常！请重试")
+										}
+									},
+									error:function(XMLHttpRequest, textStatus, errorThrown){  
+										console.log("请求对象XMLHttpRequest: " + XMLHttpRequest);  
+										console.log("错误类型textStatus: " + textStatus);  
+										console.log("异常对象errorThrown: " + errorThrown);  
+										alert("删除失败！请重试")
+									}  
+								});          			 
+	                		}
+	                	});
+
 	                }else{
 	                	console.log("该用户手机号码不存在....");
 	                	self.location='login.html';
@@ -45,14 +202,14 @@ $(document).ready(function(){
 	            	console.log("ajax请求失败....");
 	            }
 	        });
-	}else{
-		console.log("本地无缓存数据....");
-		self.location='login.html';
-	}
+}else{
+	console.log("本地无缓存数据....");
+	self.location='login.html';
+}
 
 
-	/* 图片上传插件 */
-	var uploader = WebUploader.create({
+/* 图片上传插件 */
+var uploader = WebUploader.create({
 
     // 选完文件后，是否自动上传。
     auto: true,
@@ -258,6 +415,22 @@ $("#modal-alert2").iziModal({
 	width: 400
 });
 
+$("#modal-alert99").iziModal({
+	title: "删除信息成功！",
+	iconClass: 'icon-check',
+	headerColor: '#ff0000',
+	overlayClose: false,
+	width: 400
+});
+
+$("#modal-alert98").iziModal({
+	title: "删除好友成功！（同时聊天记录也会被删除）",
+	iconClass: 'icon-check',
+	headerColor: '#f5576c',
+	overlayClose: false,
+	width: 400
+});
+
 $('.change-message').click(function(){
 	var user_mes = {
 		phone: $('.welcome-lump .phone').html(),
@@ -306,7 +479,7 @@ $('.change-pw').click(function(){
 				if(res.flag){
 					console.log("更改密码成功....");
 					$('#modal-alert1').iziModal('open');
-					$('#modal-alert').on('click','.iziModal-button-close',function(){
+					$('#modal-alert1').on('click','.iziModal-button-close',function(){
 					//UnMaskIt($('.mask'));
 					window.location.reload();
 				});
@@ -318,11 +491,12 @@ $('.change-pw').click(function(){
 		$('#modal-alert2').iziModal('open');
 	}
 });
-	$('.left-list').on('click','li',function(){
-		var now_index = $(this).index();
-		$(this).addClass("cur").siblings("li").removeClass("cur");
-		$('.list-content li:eq('+now_index+')').removeClass("hide").siblings().addClass("hide");
-	});
+
+$('.left-list').on('click','li',function(){
+	var now_index = $(this).index();
+	$(this).addClass("cur").siblings("li").removeClass("cur");
+	$('.list-content .item').eq(now_index).removeClass("hide").siblings().addClass("hide");
+});
 
 
         // 基于准备好的dom，初始化echarts实例
@@ -385,7 +559,7 @@ $('.change-pw').click(function(){
         var valueList = data.map(function (item) {
         	return item[1];
         });
-    var  option1 = {
+        var  option1 = {
 	    // Make gradient line here
 	    visualMap: {
 	    	show: false,

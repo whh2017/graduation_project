@@ -42,14 +42,13 @@
 				<li class="cur"><a href="#"><i class="edit"></i>编辑资料</a></li>
 				<li><a href="#"><i class="shop"></i>物品发布</a></li>
 				<li><a href="#"><i class="update"></i>好友管理</a></li>
-				<li><a href="#"><i class="point"></i>积分详情 </a></li>
 				<li><a href="#"><i class="dong"></i>我的帖子</a></li>
 				<li><a href="#"><i class="contact"></i>围诚统计</a></li>
 			</ul>
 		</div>
 		<div class="list-content fl">
 			<ul>
-				<li class="edit-content">
+				<li class="item edit-content">
 					<div class="tt clearfix">
 						<p class="fl">编辑资料</p>
 						<span class="fl">可在当前板块修改您的个人信息以及个性资料</span>
@@ -58,7 +57,7 @@
 						<dl>
 							<dt class="show-message clearfix">
 								<div class="head-img fl">
-									<img class="img-preview" src="images/local/init.jpg">
+									<img class="img-preview">
 									<p class="upload">更改头像</p>
 
 								</div>
@@ -141,19 +140,40 @@
 						</dl>
 					</div>
 				</li>
-				<li class="things-fabu hide">
+				<li class="item things-fabu hide">
 					<div class="tt clearfix">
 						<p class="fl">物品发布</p>
 						<span class="fl">查询物品发布状态</span>
 					</div>
 					<div class="message">
-						
+						<p class="no-fabu hide">您没有发布过物品。</p>
+						<h4 class="hide">点击下方链接查看</h4>
+						<ul>
+						</ul>
 					</div>
 				</li>
-				<li class="hide">3</li>
-				<li class="hide">450</li>
-				<li class="hide">5</li>
-				<li class="user-statistics hide">
+				<li class="item friend-manage hide">
+					<div class="tt clearfix">
+						<p class="fl">好友管理</p>
+						<span class="fl">可在当前板块管理你的聊天好友列表</span>
+					</div>
+					<p class="no-friend hide">您未添加任何好友，赶紧去各个板块私戳他们吧~</p>
+					<ul class="friend-list clearfix">
+					</ul>
+				</li>
+				<li class="item hide plus-fabu">
+					<div class="tt clearfix">
+						<p class="fl">Plus发布</p>
+						<span class="fl">查询Plus发布状态</span>
+					</div>
+					<div class="message">
+						<p class="no-fabu hide">您没有发布过Plus。</p>
+						<h4 class="hide">点击下方链接查看你所发过的Plus动态。</h4>
+						<ul>
+						</ul>
+					</div>
+				</li>
+				<li class="item user-statistics hide">
 					<div class="tt clearfix">
 						<p class="fl">围诚统计</p>
 						<span class="fl">可查询围城社区用户数据</span>
@@ -176,6 +196,8 @@
 <div id="modal-alert" class="iziModal"></div>
 <div id="modal-alert1" class="iziModal"></div>
 <div id="modal-alert2" class="iziModal"></div>
+<div id="modal-alert99" class="iziModal"></div>
+<div id="modal-alert98" class="iziModal"></div>
 	<!--
 	<div class="register-form hide" id="register-form">
 		<div class="tt">

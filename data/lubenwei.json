@@ -1,15 +1,56 @@
 {	
 	"user_id":{
 		"phone":"13660449184",
+		"user_img":"images/local/maiheliang.jpg",
 		"point":"500",
 		"id":"wcsq_20171017002",
-		"name":"卢本伟NO.1",
+		"name":"渣渣辉",
 		"sex":"男",
 		"year":"18岁",
 		"school":"广州商学院",
 		"major":"物联网工程",
 		"loc":"",
-		"rank":"荣耀黄金"
+		"rank":"最强黄金"
 	},
+	"things":[
+		{	
+			"things_id": "123456",
+			"title": "转让XXX转让XXX转让XXX转让XXX转让XXX转让XXX转让XXX转让XXX",
+			"t_href": "sale_things.html"
+		},
+		{	
+			"things_id": "123456789",
+			"title": "转让XXX转让XXX转让XXX转让XXX转让XXX转让XXX转让XXX转让XXX11",
+			"t_href": "sale_things.html"
+		}
+
+	],
+	"plus":[
+		{	
+			"plus_id": "123456",
+			"title": "gongxigongxi",
+			"p_href": "bbs_page/2017_10/bbs_item.html"
+		},
+		{	
+			"plus_id": "123451212126789",
+			"title": "123213213213213213213",
+			"p_href": "bbs_page/2017_10/bbs_item.html"
+		}
+
+	],
+	"friend":[
+		{
+			"friend_id": "xxxxxx",
+			"friend_img": "images/local/maiheliang.jpg",
+			"friend_phone": "15999987056",
+			"friend_name": "古天乐"
+		},
+		{
+			"friend_id": "xxxxxx",
+			"friend_img": "images/local/maiheliang.jpg",
+			"friend_phone": "15999987056",
+			"friend_name": ""
+		}
+	],
 	"flag": true 
 }

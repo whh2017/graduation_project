@@ -179,14 +179,27 @@ $(document).ready(function() {
 			success: function (res) {  
 	                //alert(res);  
 	                //layer.close(ii); 
-	                if(res.flag){
+	                if(res.flag == 'true'){
 	                	console.log("该用户手机号码存在....");
 	                	$('.border-lump li:eq(0)').empty().html('<p class="fl">用户&nbsp;</p> <span class="phone fl"></span>');
 	                	$('.border-lump .phone').html(res.user_id.phone);
 	                	$('.border-lump ul').append('<li><a href="#">个人中心</li>')
 	                	$('.border-lump li:eq(1)').empty().html('<p class="cancel fl ml-30">注销</p>');   
+	                }else{
+	                	$("#modal-alert5").iziModal({
+	                		title: res.flag,
+	                		iconClass: 'icon-check',
+	                		headerColor: '#1da1f2',
+	                		overlayClose: false,
+	                		width: 300
+	                	});
+	                	$('#modal-alert5').iziModal('open');		
 	                }
-	            }
+	            },
+	            error:function(err){  
+	            	console.log(err);              	
+	            }  
+
 	        });
 	}else{   		
 		console.log("不存在的....");
@@ -212,7 +225,7 @@ $(document).ready(function() {
 				success: function (res) {  
 					if(res.flag){
 						console.log("注册成功");
-								UnMaskIt($('.mask'));
+						UnMaskIt($('.mask'));
 						//window.location.reload();
 						$('#register-form').addClass("hide");
 						$('#modal-alert').iziModal('open');
@@ -223,10 +236,10 @@ $(document).ready(function() {
 						console.log(storage.data);
 						$('#modal-alert').on('click','.iziModal-button-close',function(){
 						//UnMaskIt($('.mask'));
-							window.location.reload(); 
-							});
-						}
+						window.location.reload(); 
+					});
 					}
+				}
 			});  
 		}else{
 			alert("信息不全，请填写完整。");
